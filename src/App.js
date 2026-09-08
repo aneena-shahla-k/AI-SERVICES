@@ -1,24 +1,50 @@
-import logo from './logo.svg';
-import './App.css';
+import SmoothScroll from "./components/SmoothScroll/SmoothScroll";
+import Navbar from "./components/Navigation/Navbar";
+// import JourneyRoute from "./components/JourneyRoute";
+
+import Hero from "./components/Hero/Hero";
+import RouteSection from "./components/RouteSection/RouteSection";
+// import Services from "./components/Services/Services";
+// import AI42 from "./components/AI42/AI42";
+// import Packages from "./components/Packages/Packages";
+// import FinalCTA from "./components/CTA/FinalCTA";
+import ConceptBlueprint from "./components/ConceptBlueprint/ConceptBlueprint";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SmoothScroll>
+      {/* <JourneyRoute /> */}
+
+      <Navbar />
+
+      <main>
+        <section id="hero">
+          <Hero />
+        </section>
+        <section id="concept">
+          <ConceptBlueprint />
+        </section>
+
+
+        <section id="route">
+          <RouteSection />
+        </section>
+
+        {/* <Services />
+
+        <section id="ai42">
+          <AI42 />
+        </section>
+
+        <section id="packages">
+          <Packages />
+        </section>
+
+        <section id="final">
+          <FinalCTA />
+        </section> */}
+      </main>
+    </SmoothScroll>
   );
 }
 
