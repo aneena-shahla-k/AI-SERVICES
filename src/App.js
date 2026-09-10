@@ -3,12 +3,14 @@ import Navbar from "./components/Navigation/Navbar";
 // import JourneyRoute from "./components/JourneyRoute";
 
 import Hero from "./components/Hero/Hero";
-import RouteSection from "./components/RouteSection/RouteSection";
-// import Services from "./components/Services/Services";
+// import RouteSection from "./components/RouteSection/RouteSection";
+import Services from "./components/Services/Services";
 // import AI42 from "./components/AI42/AI42";
 // import Packages from "./components/Packages/Packages";
 // import FinalCTA from "./components/CTA/FinalCTA";
-import ConceptBlueprint from "./components/ConceptBlueprint/ConceptBlueprint";
+// import ConceptBlueprint from "./components/ConceptBlueprint/ConceptBlueprint";
+// import GlobalRouteMap from "./components/GlobalRouteMap/GlobalRouteMap";
+import GlobalRoute from "./components/GlobalRouteMap/GlobalRoute";
 
 function App() {
   return (
@@ -21,18 +23,21 @@ function App() {
         <section id="hero">
           <Hero />
         </section>
-        <section id="concept">
+        {/* <section id="concept">
           <ConceptBlueprint />
+        </section> */}
+        <section>
+          <GlobalRoute/>
         </section>
 
 
-        <section id="route">
+        {/* <section id="route">
           <RouteSection />
-        </section>
+        </section> */}
 
-        {/* <Services />
+         <Services />
 
-        <section id="ai42">
+        {/* <section id="ai42">
           <AI42 />
         </section>
 

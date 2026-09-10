@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import "./Hero.css";
@@ -9,71 +9,130 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const videoRef = useRef(null);
 
-  /*
-   * VIDEO PLAY / PAUSE BASED ON HERO VISIBILITY
-   */
-  useEffect(() => {
-    const video = videoRef.current;
+  useLayoutEffect(() => {
     const section = sectionRef.current;
+    const video = videoRef.current;
 
-    if (!video || !section) return;
+    if (!section || !video) return;
 
-    video.muted = false;
-    video.volume = 1;
+    // Absolutely prevent looping
+    video.loop = false;
+    video.autoplay = false;
 
-    const playVideo = async () => {
-      try {
-        await video.play();
-      } catch (error) {
-        console.log("Autoplay with sound blocked by browser.");
+    const playVideo = () => {
+      // Always start from beginning
+      video.currentTime = 0;
+      video.loop = false;
+
+      const promise = video.play();
+
+      if (promise) {
+        promise.catch(() => {
+          // Browser autoplay restriction
+        });
       }
     };
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          playVideo();
-        } else {
-          video.pause();
-        }
-      },
-      {
-        threshold: 0.1,
+    const stopVideo = () => {
+      video.pause();
+
+      // Reset to beginning so it never continues in background
+      try {
+        video.currentTime = 0;
+      } catch (error) {
+        // Ignore
       }
-    );
+    };
 
-    observer.observe(section);
+    const handleVideoEnded = () => {
+      // Video finished — stay stopped
+      video.pause();
 
-    // Initial attempt
+      try {
+        video.currentTime = video.duration;
+      } catch (error) {
+        // Ignore
+      }
+    };
+
+    video.addEventListener("ended", handleVideoEnded);
+
+    /*
+     * HERO SCROLL CONTROL
+     */
+    const heroTrigger = ScrollTrigger.create({
+      trigger: section,
+
+      start: "top top",
+      end: "bottom top",
+
+      /*
+       * First time entering Hero
+       */
+      onEnter: () => {
+        playVideo();
+      },
+
+      /*
+       * Returning to Hero from below
+       */
+      onEnterBack: () => {
+        playVideo();
+      },
+
+      /*
+       * Scrolling down OUT of Hero
+       */
+      onLeave: () => {
+        stopVideo();
+      },
+
+      /*
+       * Scrolling above Hero
+       */
+      onLeaveBack: () => {
+        stopVideo();
+      },
+    });
+
+    /*
+     * Try to start when page loads.
+     * No autoplay attribute is used.
+     */
     playVideo();
 
     /*
-     * If browser blocks autoplay,
-     * first user interaction will start it.
+     * If browser blocks autoplay with sound,
+     * retry on first user interaction.
      */
     const unlockVideo = () => {
-      if (video.paused) {
-        video.muted = false;
-        video.volume = 1;
+      const rect = section.getBoundingClientRect();
 
-        video.play().catch(() => {});
+      const heroVisible =
+        rect.top < window.innerHeight &&
+        rect.bottom > 0;
+
+      if (heroVisible && video.paused) {
+        playVideo();
       }
     };
 
-    window.addEventListener("pointerdown", unlockVideo, {
-      once: true,
-    });
+    window.addEventListener("pointerdown", unlockVideo);
+    window.addEventListener("touchstart", unlockVideo);
+    window.addEventListener("wheel", unlockVideo);
 
-    window.addEventListener("touchstart", unlockVideo, {
-      once: true,
-    });
-
-    window.addEventListener("wheel", unlockVideo, {
-      once: true,
-    });
-
+    /*
+     * Cleanup
+     */
     return () => {
-      observer.disconnect();
+      heroTrigger.kill();
+
+      video.pause();
+
+      video.removeEventListener(
+        "ended",
+        handleVideoEnded
+      );
 
       window.removeEventListener(
         "pointerdown",
@@ -92,91 +151,20 @@ export default function Hero() {
     };
   }, []);
 
-  /*
-   * GSAP HERO ANIMATION
-   */
-  useLayoutEffect(() => {
-    const section = sectionRef.current;
-    const video = videoRef.current;
-
-    if (!section || !video) return;
-
-    const ctx = gsap.context(() => {
-      /*
-       * Cinematic entrance
-       */
-      gsap.fromTo(
-        video,
-        {
-          opacity: 0,
-          scale: 1.08,
-        },
-        {
-          opacity: 1,
-          scale: 1,
-          duration: 1.8,
-          ease: "power2.out",
-        }
-      );
-
-      /*
-       * Hero → GPS Route
-       */
-      gsap.timeline({
-        scrollTrigger: {
-          trigger: section,
-          start: "top top",
-          end: "bottom top",
-          scrub: 1.2,
-          pin: true,
-          anticipatePin: 1,
-        },
-      })
-        .to(
-          video,
-          {
-            scale: 1.12,
-            yPercent: -5,
-            ease: "none",
-          },
-          0
-        )
-        .to(
-          section,
-          {
-            opacity: 0,
-            ease: "none",
-          },
-          0.7
-        );
-    }, section);
-
-    return () => {
-      ctx.revert();
-    };
-  }, []);
-
   return (
     <section
       ref={sectionRef}
       className="hero-section"
-      id="hero"
     >
       <div className="hero-video-wrap">
         <video
           ref={videoRef}
           className="hero-video"
-          autoPlay
+          src="/hero-video.mp4"
           playsInline
-          loop
           preload="auto"
-          controls={false}
-        >
-          <source
-            src="/hero-video.mp4"
-            type="video/mp4"
-          />
-        </video>
+          loop={false}
+        />
 
         <div className="hero-overlay" />
       </div>
