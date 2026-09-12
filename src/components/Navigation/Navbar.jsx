@@ -21,15 +21,13 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
   const navRef = useRef(null);
   const navLinksRef = useRef(null);
   const pillRef = useRef(null);
-  const ctaRef = useRef(null);
   const lastScrollY = useRef(0);
   const closeTimeoutRef = useRef(null);
 
-  // GSAP Auto-Hide on Scroll (Desktop only)
   useEffect(() => {
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      if (mobileOpen) return; // Don't hide navbar if mobile menu is open
+      if (mobileOpen) return;
 
       if (currentScroll > 50 && currentScroll > lastScrollY.current) {
         gsap.to(navRef.current, { y: -100, duration: 0.35, ease: "power2.out" });
@@ -43,7 +41,6 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
     return () => window.removeEventListener("scroll", handleScroll);
   }, [mobileOpen]);
 
-  // Desktop Hover Pill
   const handleItemHover = (e) => {
     const link = e.currentTarget;
     if (!navLinksRef.current || !pillRef.current) return;
@@ -90,7 +87,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
   return (
     <header ref={navRef} className="ac-nav">
       <div className="ac-nav__bar">
-        {/* Brand */}
+        {/* Brand / Home */}
         <button
           type="button"
           className="ac-nav__brand"
@@ -100,7 +97,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
           <span className="ac-nav__brand-badge">LLC</span>
         </button>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Links (4-Page Structure) */}
         <nav 
           ref={navLinksRef} 
           className="ac-nav__links"
@@ -108,6 +105,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
         >
           <div ref={pillRef} className="ac-nav-active-pill" />
 
+          {/* Page 1: Home */}
           <button
             type="button"
             className={`ac-nav__link-btn ${currentPage === "home" ? "active-link" : ""}`}
@@ -117,16 +115,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
             Home
           </button>
 
-          <button
-            type="button"
-            className={`ac-nav__link-btn ${currentPage === "growth-plans" ? "active-link" : ""}`}
-            onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("growth-plans")}
-          >
-            Growth Plans
-          </button>
-
-          {/* Solutions Dropdown */}
+          {/* Page 2: Solutions (with Dropdown) */}
           <div
             className="ac-nav__dropdown-wrap"
             onMouseEnter={handleDropdownEnter}
@@ -134,9 +123,9 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
           >
             <button
               type="button"
-              className={`ac-nav__link-btn ac-nav__dropdown-trigger ${currentPage === "solution-detail" ? "active-link" : ""}`}
+              className={`ac-nav__link-btn ac-nav__dropdown-trigger ${currentPage === "solutions" ? "active-link" : ""}`}
               onMouseEnter={handleItemHover}
-              onClick={() => setDropdownOpen((prev) => !prev)}
+              onClick={() => onNavigate("solutions")}
             >
               <span>Solutions</span>
               <ChevronDown size={13} className={`ac-dropdown-chevron ${dropdownOpen ? "is-rotated" : ""}`} />
@@ -154,7 +143,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
                       key={idx}
                       type="button"
                       className="ac-dropdown-item"
-                      onClick={() => handleItemSelect("solution-detail", item.slug)}
+                      onClick={() => handleItemSelect("solutions", item.slug)}
                     >
                       <span className="ac-dropdown-dot" />
                       <span>{item.label}</span>
@@ -165,56 +154,30 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
             )}
           </div>
 
+          {/* Page 3: Growth Plans */}
           <button
             type="button"
-            className={`ac-nav__link-btn ${currentPage === "ai" ? "active-link" : ""}`}
+            className={`ac-nav__link-btn ${currentPage === "growth-plans" ? "active-link" : ""}`}
             onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("ai")}
+            onClick={() => handleItemSelect("growth-plans")}
           >
-            AI
+            Growth Plans
           </button>
 
+          {/* Page 4: Project Details & Contact */}
           <button
             type="button"
-            className={`ac-nav__link-btn ${currentPage === "industries" ? "active-link" : ""}`}
+            className={`ac-nav__link-btn ${currentPage === "details" ? "active-link" : ""}`}
             onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("industries")}
+            onClick={() => handleItemSelect("details")}
           >
-            Industries
-          </button>
-
-          <button
-            type="button"
-            className={`ac-nav__link-btn ${currentPage === "work" ? "active-link" : ""}`}
-            onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("work")}
-          >
-            Our Work
-          </button>
-
-          <button
-            type="button"
-            className={`ac-nav__link-btn ${currentPage === "about" ? "active-link" : ""}`}
-            onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("about")}
-          >
-            About
-          </button>
-
-          <button
-            type="button"
-            className={`ac-nav__link-btn ${currentPage === "contact" ? "active-link" : ""}`}
-            onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("contact")}
-          >
-            Contact
+            Contact & Details
           </button>
         </nav>
 
-        {/* Right CTA (Desktop) & Mobile Toggle */}
+        {/* Right CTA */}
         <div className="ac-nav__right">
           <button
-            ref={ctaRef}
             type="button"
             className="ac-nav__cta desktop-only-cta"
             onClick={onOpenProject}
@@ -234,7 +197,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
         </div>
       </div>
 
-      {/* Mobile Drawer Dropdown Menu */}
+      {/* Mobile Drawer */}
       {mobileOpen && (
         <div className="ac-mobile-drawer">
           <div className="ac-mobile-links">
@@ -243,27 +206,23 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
               className={`ac-mobile-link ${currentPage === "home" ? "active" : ""}`}
               onClick={() => handleItemSelect("home")}
             >
-              Home
-            </button>
-
-            <button
-              type="button"
-              className={`ac-mobile-link ${currentPage === "growth-plans" ? "active" : ""}`}
-              onClick={() => handleItemSelect("growth-plans")}
-            >
-              Growth Plans
+              <span>Home</span>
             </button>
 
             {/* Mobile Solutions Accordion */}
             <div className="ac-mobile-accordion">
-              <button
-                type="button"
-                className="ac-mobile-link ac-mobile-accordion-toggle"
-                onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
-              >
-                <span>Solutions</span>
-                <ChevronDown size={14} className={mobileSolutionsOpen ? "is-rotated" : ""} />
-              </button>
+              <div className={`ac-mobile-link ac-mobile-accordion-row ${currentPage === "solutions" ? "active" : ""}`}>
+                <span className="ac-mobile-link-text" onClick={() => handleItemSelect("solutions")}>
+                  Solutions
+                </span>
+                <button 
+                  type="button" 
+                  className="ac-mobile-chevron-btn"
+                  onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                >
+                  <ChevronDown size={16} className={mobileSolutionsOpen ? "is-rotated" : ""} />
+                </button>
+              </div>
 
               {mobileSolutionsOpen && (
                 <div className="ac-mobile-subitems">
@@ -272,7 +231,7 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
                       key={idx}
                       type="button"
                       className="ac-mobile-sublink"
-                      onClick={() => handleItemSelect("solution-detail", item.slug)}
+                      onClick={() => handleItemSelect("solutions", item.slug)}
                     >
                       <span className="ac-dropdown-dot" />
                       <span>{item.label}</span>
@@ -284,46 +243,21 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
 
             <button
               type="button"
-              className={`ac-mobile-link ${currentPage === "ai" ? "active" : ""}`}
-              onClick={() => handleItemSelect("ai")}
+              className={`ac-mobile-link ${currentPage === "growth-plans" ? "active" : ""}`}
+              onClick={() => handleItemSelect("growth-plans")}
             >
-              AI
+              <span>Growth Plans</span>
             </button>
 
             <button
               type="button"
-              className={`ac-mobile-link ${currentPage === "industries" ? "active" : ""}`}
-              onClick={() => handleItemSelect("industries")}
+              className={`ac-mobile-link ${currentPage === "details" ? "active" : ""}`}
+              onClick={() => handleItemSelect("details")}
             >
-              Industries
-            </button>
-
-            <button
-              type="button"
-              className={`ac-mobile-link ${currentPage === "work" ? "active" : ""}`}
-              onClick={() => handleItemSelect("work")}
-            >
-              Our Work
-            </button>
-
-            <button
-              type="button"
-              className={`ac-mobile-link ${currentPage === "about" ? "active" : ""}`}
-              onClick={() => handleItemSelect("about")}
-            >
-              About
-            </button>
-
-            <button
-              type="button"
-              className={`ac-mobile-link ${currentPage === "contact" ? "active" : ""}`}
-              onClick={() => handleItemSelect("contact")}
-            >
-              Contact
+              <span>Contact & Details</span>
             </button>
           </div>
 
-          {/* START A PROJECT inside Mobile Drawer */}
           <div className="ac-mobile-footer">
             <button
               type="button"

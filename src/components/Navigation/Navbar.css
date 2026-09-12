@@ -1,15 +1,3 @@
-/* CompanyNavbar.css */
-/* =========================================================
-   High-Contrast Modern Tech Slate (Light Palette)
-   Base Bar: #FFFFFF / Glass
-   Primary Text: #0F172A (Slate 900)
-   Muted Links: #475569 (Slate 600)
-   Accent / Brand: #2563EB (Royal Blue)
-   Border: #E2E8F0 (Slate 200)
-   Hover Pill: #F1F5F9 (Slate 100)
-========================================================= */
-
-/* Floating Navbar Layout */
 .ac-nav {
   position: fixed;
   top: 16px;
@@ -41,7 +29,6 @@
   box-sizing: border-box;
 }
 
-/* Brand */
 .ac-nav__brand {
   display: flex;
   align-items: center;
@@ -69,7 +56,6 @@
   border-radius: 4px;
 }
 
-/* Desktop Links */
 .ac-nav__links {
   position: relative;
   display: flex;
@@ -102,6 +88,8 @@
   border-radius: 999px;
   cursor: pointer;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
 }
 
 .ac-nav__link-btn:hover {
@@ -113,7 +101,6 @@
   font-weight: 700;
 }
 
-/* Dropdown */
 .ac-nav__dropdown-wrap {
   position: relative;
 }
@@ -187,7 +174,6 @@
   flex-shrink: 0;
 }
 
-/* Right CTA & Menu button */
 .ac-nav__right {
   display: flex;
   align-items: center;
@@ -236,9 +222,6 @@
   background: #e2e8f0;
 }
 
-/* =====================================
-   MOBILE DRAWER & RESPONSIVE BEHAVIOR
-   ===================================== */
 .ac-mobile-drawer {
   pointer-events: auto;
   width: 100%;
@@ -250,18 +233,6 @@
   padding: 20px 18px;
   box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
   box-sizing: border-box;
-  animation: drawerFadeIn 0.25s ease-out;
-}
-
-@keyframes drawerFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 .ac-mobile-links {
@@ -292,8 +263,36 @@
   color: #2563eb;
 }
 
-.ac-mobile-accordion-toggle {
+.ac-mobile-accordion-row {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
+  padding: 0;
+}
+
+.ac-mobile-link-text {
+  flex: 1;
+  padding: 11px 14px;
+  cursor: pointer;
+}
+
+.ac-mobile-chevron-btn {
+  background: transparent;
+  border: none;
+  padding: 11px 14px;
+  cursor: pointer;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ac-mobile-chevron-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.ac-mobile-chevron-btn svg.is-rotated {
+  transform: rotate(180deg);
 }
 
 .ac-mobile-subitems {
@@ -317,6 +316,7 @@
   border-radius: 8px;
   cursor: pointer;
   text-align: left;
+  width: 100%;
 }
 
 .ac-mobile-sublink:hover {
@@ -352,20 +352,16 @@
   background: #1d4ed8;
 }
 
-/* Screen Breakpoint */
 @media (max-width: 960px) {
   .ac-nav__links {
     display: none;
   }
-
   .desktop-only-cta {
     display: none !important;
   }
-
   .ac-nav__menu-btn {
     display: flex;
   }
-
   .ac-nav__bar {
     padding: 6px 10px 6px 16px;
   }

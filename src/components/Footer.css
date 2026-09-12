@@ -1,0 +1,1282 @@
+/* =========================================================
+   AI CONCEPT LLC
+   PREMIUM FINAL CTA + FOOTER
+   Theme:
+   Playfair Display + Manrope
+   Cyan / Blue / White
+========================================================= */
+
+.fn-footer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 15% 30%,
+      rgba(2, 132, 199, 0.045),
+      transparent 32%
+    ),
+    radial-gradient(
+      circle at 85% 65%,
+      rgba(0, 200, 240, 0.055),
+      transparent 34%
+    ),
+    #f5f8f9;
+
+  color: #16282c;
+
+  font-family: "Manrope", sans-serif;
+
+  border-top: 1px solid #dce8ed;
+}
+
+
+/* =========================================================
+   FINAL CTA
+========================================================= */
+
+.fn-cta {
+  position: relative;
+
+  min-height: 510px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 100px 24px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.96),
+      rgba(247, 250, 251, 0.98)
+    );
+
+  border-bottom: 1px solid #dce8ed;
+}
+
+
+/* subtle grid */
+
+.fn-cta__grid {
+  position: absolute;
+  inset: 0;
+
+  background-image:
+    linear-gradient(
+      rgba(2, 132, 199, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(2, 132, 199, 0.035) 1px,
+      transparent 1px
+    );
+
+  background-size: 70px 70px;
+
+  mask-image: linear-gradient(
+    to bottom,
+    transparent,
+    black 25%,
+    black 75%,
+    transparent
+  );
+
+  pointer-events: none;
+}
+
+
+/* ambient glow */
+
+.fn-cta__ambient {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(70px);
+}
+
+
+.fn-ambient-one {
+  width: 500px;
+  height: 350px;
+
+  left: -180px;
+  top: 20%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(2, 132, 199, 0.10),
+      transparent 70%
+    );
+}
+
+
+.fn-ambient-two {
+  width: 520px;
+  height: 360px;
+
+  right: -180px;
+  bottom: 5%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(0, 210, 240, 0.09),
+      transparent 70%
+    );
+}
+
+
+/* CTA content */
+
+.fn-cta__content {
+  position: relative;
+  z-index: 3;
+
+  width: min(900px, 100%);
+
+  text-align: center;
+}
+
+
+/* =========================================================
+   EYEBROW
+========================================================= */
+
+.fn-eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 11px;
+
+  margin-bottom: 26px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 10px;
+  font-weight: 800;
+
+  letter-spacing: 0.24em;
+
+  color: #52666b;
+
+  text-transform: uppercase;
+}
+
+
+.fn-eyebrow-line {
+  width: 34px;
+  height: 1px;
+
+  background: #b9cbd0;
+}
+
+
+.fn-eyebrow-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #0284c7;
+
+  box-shadow:
+    0 0 0 4px rgba(2, 132, 199, 0.10),
+    0 0 14px rgba(2, 132, 199, 0.30);
+}
+
+
+/* =========================================================
+   CTA TITLE
+========================================================= */
+
+.fn-cta__title {
+  margin: 0;
+
+  font-family: "Playfair Display", serif;
+
+  font-size: clamp(48px, 7vw, 82px);
+
+  line-height: 0.98;
+
+  letter-spacing: -0.045em;
+
+  font-weight: 500;
+
+  color: #101c1e;
+
+  text-transform: none;
+}
+
+
+.fn-cta__title-accent {
+  position: relative;
+
+  display: inline-block;
+
+  font-style: italic;
+
+  font-weight: 400;
+
+  color: #0284c7;
+
+  text-shadow:
+    0 0 24px rgba(2, 132, 199, 0.16);
+}
+
+
+/* underline */
+
+.fn-cta__title-accent::after {
+  content: "";
+
+  position: absolute;
+
+  left: 4%;
+  right: 4%;
+
+  bottom: -10px;
+
+  height: 2px;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #0284c7 20%,
+      #22d3ee 80%,
+      transparent
+    );
+
+  opacity: 0.65;
+}
+
+
+/* =========================================================
+   CTA DESCRIPTION
+========================================================= */
+
+.fn-cta__lead {
+  max-width: 590px;
+
+  margin: 32px auto 34px;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 500;
+
+  line-height: 1.7;
+
+  letter-spacing: -0.01em;
+
+  color: #52666b;
+}
+
+
+/* =========================================================
+   PRIMARY BUTTON
+========================================================= */
+
+.fn-btn-primary {
+  position: relative;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 13px;
+
+  min-width: 190px;
+
+  padding: 14px 18px 14px 24px;
+
+  border: 1px solid #0284c7;
+
+  border-radius: 999px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #0284c7,
+      #036fa7
+    );
+
+  color: #ffffff;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.14em;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 12px 30px rgba(2, 132, 199, 0.18);
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    background 0.3s ease;
+}
+
+
+.fn-btn-primary:hover {
+  transform: translateY(-3px);
+
+  background:
+    linear-gradient(
+      135deg,
+      #0398df,
+      #0284c7
+    );
+
+  box-shadow:
+    0 16px 38px rgba(2, 132, 199, 0.27);
+}
+
+
+.fn-btn-icon {
+  width: 28px;
+  height: 28px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.15);
+
+  transition: transform 0.3s ease;
+}
+
+
+.fn-btn-primary:hover .fn-btn-icon {
+  transform: translate(2px, -2px);
+}
+
+
+/* =========================================================
+   CTA ROUTE
+========================================================= */
+
+.fn-cta-route {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 9px;
+
+  margin-top: 34px;
+
+  color: #718286;
+
+  font-size: 8px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.18em;
+}
+
+
+.fn-route-point {
+  width: 5px;
+  height: 5px;
+
+  border-radius: 50%;
+
+  background: #0284c7;
+
+  box-shadow:
+    0 0 0 3px rgba(2, 132, 199, 0.08);
+}
+
+
+.fn-route-dash {
+  color: #a7b8bc;
+
+  font-size: 8px;
+
+  letter-spacing: -1px;
+}
+
+
+/* =========================================================
+   FOOTER CONTAINER
+========================================================= */
+
+.fn-footer__container {
+  width: min(1240px, calc(100% - 70px));
+
+  margin: 0 auto;
+}
+
+
+/* =========================================================
+   MAIN FOOTER
+========================================================= */
+
+.fn-footer__main {
+  display: grid;
+
+  grid-template-columns:
+    0.85fr
+    1.15fr;
+
+  gap: 90px;
+
+  padding: 78px 0 70px;
+}
+
+
+/* =========================================================
+   BRAND
+========================================================= */
+
+.fn-footer__brand {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+}
+
+
+.fn-brand-logo {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 0;
+
+  margin: 0 0 18px;
+
+  border: none;
+
+  background: transparent;
+
+  cursor: pointer;
+
+  color: #102125;
+
+  font-family: "Manrope", sans-serif;
+}
+
+
+.fn-brand-main {
+  font-size: 19px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.035em;
+}
+
+
+.fn-logo-sub {
+  padding: 4px 7px;
+
+  border-radius: 5px;
+
+  border: 1px solid #b9dce9;
+
+  background: rgba(224, 242, 254, 0.55);
+
+  color: #0284c7;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.08em;
+}
+
+
+.fn-brand-desc {
+  margin: 0 0 20px;
+
+  max-width: 350px;
+
+  color: #43585d;
+
+  font-size: 13px;
+
+  font-weight: 500;
+
+  line-height: 1.75;
+}
+
+
+.fn-location-badge {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #344c51;
+
+  font-size: 11.5px;
+
+  font-weight: 700;
+}
+
+
+.fn-location-icon {
+  width: 26px;
+  height: 26px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  background: #e8f5fa;
+
+  color: #0284c7;
+
+  border: 1px solid #cce7f1;
+}
+
+
+.fn-status {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 15px;
+
+  color: #667a7f;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+
+  text-transform: uppercase;
+}
+
+
+.fn-status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #16a34a;
+
+  box-shadow:
+    0 0 0 3px rgba(22, 163, 74, 0.10);
+}
+
+
+/* =========================================================
+   COLUMNS
+========================================================= */
+
+.fn-footer__columns {
+  display: grid;
+
+  grid-template-columns:
+    1fr
+    1fr
+    1fr;
+
+  gap: 42px;
+}
+
+
+.fn-col {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: flex-start;
+
+  gap: 13px;
+}
+
+
+.fn-col-label {
+  margin-bottom: 6px;
+
+  color: #253b40;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.20em;
+
+  text-transform: uppercase;
+}
+
+
+.fn-col button,
+.fn-col a,
+.fn-col > span:not(.fn-col-label) {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #4a6065;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 12px;
+
+  font-weight: 500;
+
+  line-height: 1.4;
+
+  text-decoration: none;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.fn-col button:hover,
+.fn-col a:hover {
+  color: #0284c7;
+
+  transform: translateX(3px);
+}
+
+
+.fn-col button svg,
+.fn-col a svg {
+  opacity: 0;
+
+  transform: translate(-3px, 3px);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.fn-col button:hover svg,
+.fn-col a:hover svg {
+  opacity: 1;
+
+  transform: translate(0, 0);
+}
+
+
+/* =========================================================
+   DIRECT CONTACT
+========================================================= */
+
+.fn-direct a,
+.fn-direct button {
+  gap: 9px !important;
+}
+
+
+.fn-contact-icon {
+  width: 27px;
+  height: 27px;
+
+  display: grid;
+  place-items: center;
+
+  flex-shrink: 0;
+
+  border-radius: 7px;
+
+  color: #0284c7;
+
+  background: #e9f6fb;
+
+  border: 1px solid #d0e9f2;
+}
+
+
+.fn-base-pill {
+  display: inline-flex !important;
+
+  align-items: center;
+
+  gap: 7px;
+
+  margin-top: 5px;
+
+  padding: 8px 11px !important;
+
+  border-radius: 999px;
+
+  background: #ffffff !important;
+
+  border: 1px solid #dbe8ec !important;
+
+  color: #40575c !important;
+
+  font-size: 9.5px !important;
+
+  font-weight: 700 !important;
+
+  box-shadow:
+    0 4px 14px rgba(21, 34, 38, 0.035);
+}
+
+
+.fn-green-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: #16a34a;
+
+  box-shadow:
+    0 0 0 3px rgba(22, 163, 74, 0.10);
+}
+
+
+/* =========================================================
+   ROUTE DIVIDER
+========================================================= */
+
+.fn-footer-route {
+  position: relative;
+
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  border-top: 1px solid #dce7eb;
+  border-bottom: 1px solid #dce7eb;
+}
+
+
+.fn-route-line {
+  position: absolute;
+
+  left: 8%;
+  right: 8%;
+
+  top: 50%;
+
+  height: 1px;
+
+  background:
+    repeating-linear-gradient(
+      90deg,
+      #c8d8dd 0,
+      #c8d8dd 5px,
+      transparent 5px,
+      transparent 11px
+    );
+}
+
+
+.fn-route-progress {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 45%;
+
+  height: 1px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #0284c7,
+      transparent
+    );
+
+  opacity: 0.55;
+}
+
+
+.fn-route-label {
+  position: relative;
+
+  z-index: 2;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  background: #f5f8f9;
+
+  color: #30484d;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.16em;
+}
+
+
+.fn-route-label small {
+  color: #8a9b9f;
+
+  font-size: 7px;
+
+  letter-spacing: 0.13em;
+}
+
+
+.fn-route-left {
+  padding-right: 15px;
+}
+
+
+.fn-route-right {
+  padding-left: 15px;
+}
+
+
+.fn-route-marker {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  border: 1.5px solid #0284c7;
+
+  background: #f5f8f9;
+
+  box-shadow:
+    0 0 0 4px rgba(2, 132, 199, 0.07);
+}
+
+
+.fn-route-center {
+  position: absolute;
+
+  left: 50%;
+  top: 50%;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 2;
+
+  display: flex;
+
+  gap: 6px;
+
+  padding: 0 12px;
+
+  background: #f5f8f9;
+}
+
+
+.fn-route-center span {
+  width: 3px;
+  height: 3px;
+
+  border-radius: 50%;
+
+  background: #8db4c1;
+}
+
+
+/* =========================================================
+   BOTTOM BAR
+========================================================= */
+
+.fn-footer__bottom {
+  min-height: 74px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  color: #65787c;
+
+  font-size: 9px;
+
+  font-weight: 700;
+
+  letter-spacing: 0.08em;
+}
+
+
+.fn-copy {
+  color: #53686d;
+}
+
+
+.fn-bottom-tag {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  color: #718287;
+
+  font-size: 8px;
+
+  letter-spacing: 0.12em;
+}
+
+
+.fn-bottom-tag svg {
+  color: #0284c7;
+}
+
+
+.fn-top-btn {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 0;
+
+  border: none;
+
+  background: transparent;
+
+  color: #40575c;
+
+  font-family: "Manrope", sans-serif;
+
+  font-size: 9px;
+
+  font-weight: 800;
+
+  letter-spacing: 0.1em;
+
+  cursor: pointer;
+
+  transition: color 0.25s ease;
+}
+
+
+.fn-top-btn:hover {
+  color: #0284c7;
+}
+
+
+.fn-top-icon {
+  width: 26px;
+  height: 26px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid #c9dce2;
+
+  border-radius: 50%;
+
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+.fn-top-btn:hover .fn-top-icon {
+  background: #e9f6fb;
+
+  border-color: #9fd2e3;
+
+  transform: translateY(-2px);
+}
+
+
+/* =========================================================
+   RESPONSIVE — TABLET
+========================================================= */
+
+@media (max-width: 992px) {
+
+  .fn-cta {
+    min-height: 470px;
+
+    padding:
+      90px 24px;
+  }
+
+
+  .fn-footer__container {
+    width: min(
+      100% - 48px,
+      800px
+    );
+  }
+
+
+  .fn-footer__main {
+    grid-template-columns: 1fr;
+
+    gap: 55px;
+
+    padding: 65px 0;
+  }
+
+
+  .fn-footer__brand {
+    max-width: 500px;
+  }
+
+
+  .fn-footer__columns {
+    gap: 35px;
+  }
+
+}
+
+
+/* =========================================================
+   RESPONSIVE — MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .fn-cta {
+    min-height: 430px;
+
+    padding:
+      75px 18px;
+  }
+
+
+  .fn-cta__grid {
+    background-size: 45px 45px;
+  }
+
+
+  .fn-eyebrow {
+    gap: 7px;
+
+    font-size: 8px;
+
+    letter-spacing: 0.16em;
+  }
+
+
+  .fn-eyebrow-line {
+    width: 20px;
+  }
+
+
+  .fn-cta__title {
+    font-size: clamp(
+      42px,
+      13vw,
+      58px
+    );
+
+    line-height: 1;
+  }
+
+
+  .fn-cta__title-accent::after {
+    bottom: -7px;
+  }
+
+
+  .fn-cta__lead {
+    max-width: 340px;
+
+    margin-top: 26px;
+
+    font-size: 12.5px;
+
+    line-height: 1.65;
+  }
+
+
+  .fn-btn-primary {
+    width: 100%;
+    max-width: 280px;
+
+    min-width: 0;
+  }
+
+
+  .fn-cta-route {
+    margin-top: 27px;
+
+    font-size: 7px;
+  }
+
+
+  .fn-route-dash {
+    display: none;
+  }
+
+
+  .fn-footer__container {
+    width: calc(100% - 34px);
+  }
+
+
+  .fn-footer__main {
+    padding: 55px 0;
+
+    gap: 45px;
+  }
+
+
+  .fn-brand-main {
+    font-size: 18px;
+  }
+
+
+  .fn-brand-desc {
+    font-size: 12px;
+  }
+
+
+  .fn-footer__columns {
+    grid-template-columns: 1fr 1fr;
+
+    gap: 42px 24px;
+  }
+
+
+  .fn-direct {
+    grid-column: 1 / -1;
+  }
+
+
+  .fn-col-label {
+    font-size: 8px;
+
+    letter-spacing: 0.17em;
+  }
+
+
+  .fn-col button,
+  .fn-col a,
+  .fn-col > span:not(.fn-col-label) {
+    font-size: 11px;
+  }
+
+
+  .fn-footer-route {
+    height: 52px;
+  }
+
+
+  .fn-route-label {
+    font-size: 7px;
+
+    gap: 6px;
+  }
+
+
+  .fn-route-label small {
+    display: none;
+  }
+
+
+  .fn-route-line {
+    left: 5%;
+    right: 5%;
+  }
+
+
+  .fn-footer__bottom {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    justify-content: center;
+
+    padding: 24px 0;
+
+    gap: 15px;
+  }
+
+
+  .fn-bottom-tag {
+    order: 3;
+  }
+
+
+  .fn-top-btn {
+    position: absolute;
+
+    right: 17px;
+  }
+
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 380px) {
+
+  .fn-cta__title {
+    font-size: 39px;
+  }
+
+
+  .fn-footer__columns {
+    grid-template-columns: 1fr;
+  }
+
+
+  .fn-direct {
+    grid-column: auto;
+  }
+
+
+  .fn-cta-route {
+    display: none;
+  }
+
+}
