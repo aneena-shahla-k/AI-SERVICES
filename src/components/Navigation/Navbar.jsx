@@ -115,6 +115,16 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
             Home
           </button>
 
+          {/* Page 3: Growth Plans */}
+          <button
+            type="button"
+            className={`ac-nav__link-btn ${currentPage === "about" ? "active-link" : ""}`}
+            onMouseEnter={handleItemHover}
+            onClick={() => handleItemSelect("about")}
+          >
+            About
+          </button>
+
           {/* Page 2: Solutions (with Dropdown) */}
           <div
             className="ac-nav__dropdown-wrap"
@@ -154,15 +164,6 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
             )}
           </div>
 
-          {/* Page 3: Growth Plans */}
-          <button
-            type="button"
-            className={`ac-nav__link-btn ${currentPage === "growth-plans" ? "active-link" : ""}`}
-            onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("growth-plans")}
-          >
-            Growth Plans
-          </button>
 
           {/* Page 4: Project Details & Contact */}
           <button

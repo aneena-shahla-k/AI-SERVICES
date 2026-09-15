@@ -1,0 +1,1364 @@
+/* =========================================================
+   AI SOLUTIONS — OPEN / FLOATING LIGHT DESIGN
+   ========================================================= */
+
+.ai-section {
+  --blue: #1597d4;
+  --blue-dark: #0878ae;
+  --blue-light: #63c9f2;
+
+  --text-primary: #102033;
+  --text-secondary: #536579;
+  --text-muted: #8192a3;
+
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+
+  padding: 105px 32px;
+
+  background:
+    radial-gradient(
+      70% 90% at 75% 48%,
+      rgba(125, 211, 252, 0.12),
+      transparent 65%
+    ),
+    radial-gradient(
+      55% 70% at 0% 10%,
+      rgba(103, 201, 242, 0.09),
+      transparent 65%
+    ),
+    #ffffff;
+
+  color: var(--text-primary);
+
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+}
+
+
+/* =========================================================
+   BACKGROUND DECORATION
+   ========================================================= */
+
+.ai-section::before {
+  content: "";
+
+  position: absolute;
+
+  width: 650px;
+  height: 650px;
+
+  top: 0;
+  right: -180px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(71, 185, 235, 0.11) 0%,
+      rgba(71, 185, 235, 0.04) 38%,
+      transparent 72%
+    );
+
+  pointer-events: none;
+}
+
+.ai-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 500px;
+  height: 500px;
+
+  left: -260px;
+  bottom: -250px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(103, 201, 242, 0.08),
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.ai-inner {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1280px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(310px, 0.78fr)
+    minmax(620px, 1.22fr);
+
+  gap: 35px;
+
+  align-items: center;
+}
+
+
+/* =========================================================
+   LEFT CONTENT
+   ========================================================= */
+
+.copy-col {
+  position: relative;
+
+  z-index: 5;
+
+  padding-left: 5px;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.eyebrow {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 18px;
+
+  color: var(--blue-dark);
+
+  font-size: 11px;
+
+  font-weight: 750;
+
+  letter-spacing: 0.14em;
+}
+
+.eyebrow-dot {
+  width: 7px;
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+
+  box-shadow:
+    0 0 0 5px rgba(21, 151, 212, 0.09),
+    0 0 16px rgba(21, 151, 212, 0.3);
+
+  animation:
+    eyebrow-pulse 2.5s ease-in-out infinite;
+}
+
+@keyframes eyebrow-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.7);
+    opacity: 0.6;
+  }
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.ai-section h2 {
+  max-width: 560px;
+
+  margin: 0 0 18px;
+
+  font-family:
+    "Space Grotesk",
+    "Inter",
+    sans-serif;
+
+  font-size:
+    clamp(40px, 4.3vw, 61px);
+
+  line-height: 1.02;
+
+  font-weight: 600;
+
+  letter-spacing: -0.05em;
+
+  color: var(--text-primary);
+}
+
+.heading-gradient {
+  display: block;
+
+  background:
+    linear-gradient(
+      100deg,
+      #0878ae 0%,
+      #1597d4 45%,
+      #55bde8 100%
+    );
+
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+}
+
+
+/* =========================================================
+   LEDE
+   ========================================================= */
+
+.lede {
+  max-width: 450px;
+
+  margin: 0 0 35px;
+
+  font-size: 17px;
+
+  line-height: 1.65;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   SUBBLOCK
+   ========================================================= */
+
+.subblock {
+  display: flex;
+
+  gap: 16px;
+
+  max-width: 470px;
+
+  margin-bottom: 34px;
+}
+
+.subblock-line {
+  width: 3px;
+
+  flex-shrink: 0;
+
+  border-radius: 20px;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--blue),
+      rgba(21, 151, 212, 0.08)
+    );
+}
+
+.subblock h3 {
+  margin: 0 0 8px;
+
+  font-family:
+    "Space Grotesk",
+    "Inter",
+    sans-serif;
+
+  font-size: 16px;
+
+  font-weight: 650;
+
+  color: var(--text-primary);
+}
+
+.subblock p {
+  max-width: 440px;
+
+  margin: 0;
+
+  font-size: 14.5px;
+
+  line-height: 1.65;
+
+  color: var(--text-muted);
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.cta {
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  padding:
+    7px
+    8px
+    7px
+    20px;
+
+  border:
+    1px solid
+    rgba(21, 151, 212, 0.28);
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.85);
+
+  color: var(--blue-dark);
+
+  font-family: inherit;
+
+  font-size: 14px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 30px
+    rgba(21, 151, 212, 0.08);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.cta:hover {
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(21, 151, 212, 0.5);
+
+  box-shadow:
+    0 15px 35px
+    rgba(21, 151, 212, 0.14);
+}
+
+.cta-icon {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+
+  color: #ffffff;
+
+  transition:
+    transform 0.25s ease;
+}
+
+.cta:hover .cta-icon {
+  transform: translateX(3px);
+}
+
+
+/* =========================================================
+   SERVICE COUNT
+   ========================================================= */
+
+.service-count {
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  margin-top: 27px;
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+}
+
+.service-count span {
+  color: var(--blue-dark);
+
+  font-size: 18px;
+
+  font-weight: 750;
+}
+
+
+/* =========================================================
+   OPEN STAGE
+   IMPORTANT:
+   NO BOX / NO BORDER
+   ========================================================= */
+
+.stage {
+  position: relative;
+
+  width: 100%;
+
+  aspect-ratio: 1 / 0.9;
+
+  min-height: 560px;
+
+  overflow: visible;
+
+  border: none;
+
+  border-radius: 0;
+
+  background: transparent;
+
+  box-shadow: none;
+}
+
+
+/* =========================================================
+   REMOVE GRID
+   ========================================================= */
+
+.stage-grid {
+  display: none;
+}
+
+
+/* =========================================================
+   SOFT ROBOT GLOW
+   ========================================================= */
+
+.stage-glow {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  z-index: 0;
+
+  filter: blur(3px);
+}
+
+.stage-glow-one {
+  width: 480px;
+  height: 480px;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(80, 194, 239, 0.16) 0%,
+      rgba(80, 194, 239, 0.07) 35%,
+      transparent 70%
+    );
+
+  animation:
+    main-glow 5s ease-in-out infinite;
+}
+
+.stage-glow-two {
+  width: 260px;
+  height: 260px;
+
+  top: 28%;
+  right: 4%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(21, 151, 212, 0.09),
+      transparent 70%
+    );
+
+  animation:
+    secondary-glow 6s ease-in-out infinite;
+}
+
+@keyframes main-glow {
+  0%,
+  100% {
+    opacity: 0.65;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.1);
+  }
+}
+
+@keyframes secondary-glow {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+
+/* =========================================================
+   ROBOT
+   ========================================================= */
+
+.robot-image {
+  position: absolute;
+
+  z-index: 2;
+
+  top: 50%;
+  left: 50%;
+
+  width: 72%;
+  height: 88%;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: block;
+
+  object-fit: contain;
+
+  object-position: center;
+
+  padding: 0;
+
+  filter:
+    drop-shadow(
+      0 30px 40px
+      rgba(18, 91, 130, 0.14)
+    );
+
+  animation:
+    robot-float 5s ease-in-out infinite;
+}
+
+@keyframes robot-float {
+  0%,
+  100% {
+    transform:
+      translate(-50%, -50%)
+      translateY(0);
+  }
+
+  50% {
+    transform:
+      translate(-50%, -50%)
+      translateY(-8px);
+  }
+}
+
+
+/* =========================================================
+   ROBOT LIGHT
+   ========================================================= */
+
+.robot-light {
+  position: absolute;
+
+  z-index: 1;
+
+  width: 170px;
+  height: 170px;
+
+  top: 50%;
+  left: 50%;
+
+  transform:
+    translate(-50%, -50%);
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(73, 190, 240, 0.13),
+      transparent 70%
+    );
+
+  pointer-events: none;
+
+  animation:
+    robot-light-pulse 3.5s ease-in-out infinite;
+}
+
+@keyframes robot-light-pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+
+    transform:
+      translate(-50%, -50%)
+      scale(0.9);
+  }
+
+  50% {
+    opacity: 1;
+
+    transform:
+      translate(-50%, -50%)
+      scale(1.2);
+  }
+}
+
+
+/* =========================================================
+   FLOATING SERVICE CHIPS
+   ========================================================= */
+
+.chip {
+  position: absolute;
+
+  z-index: 5;
+
+  transform:
+    translate(-50%, -50%);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 7px;
+
+  max-width: 205px;
+
+  padding:
+    8px
+    12px
+    8px
+    8px;
+
+  border:
+    1px solid
+    rgba(21, 151, 212, 0.13);
+
+  border-radius: 999px;
+
+  background:
+    rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(13px);
+  -webkit-backdrop-filter: blur(13px);
+
+  color: #52687c;
+
+  font-family: inherit;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 8px 25px
+    rgba(20, 100, 145, 0.07);
+
+  animation:
+    chip-float
+    4.8s
+    ease-in-out
+    infinite;
+
+  animation-delay:
+    var(--delay);
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+/* =========================================================
+   ICON
+   ========================================================= */
+
+.icon-dot {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 22px;
+  height: 22px;
+
+  flex-shrink: 0;
+
+  border-radius: 50%;
+
+  background:
+    rgba(21, 151, 212, 0.09);
+
+  color: var(--blue);
+
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease;
+}
+
+
+/* =========================================================
+   CHIP ARROW
+   ========================================================= */
+
+.chip-arrow {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 16px;
+  height: 16px;
+
+  margin-left: 1px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(21, 151, 212, 0.07);
+
+  color: var(--blue);
+
+  opacity: 0;
+
+  transform:
+    translateX(-4px);
+
+  transition:
+    opacity 0.2s ease,
+    transform 0.2s ease;
+}
+
+
+/* =========================================================
+   HOVER
+   ========================================================= */
+
+.chip:hover {
+  z-index: 8;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  border-color:
+    rgba(21, 151, 212, 0.35);
+
+  color: var(--blue-dark);
+
+  box-shadow:
+    0 12px 30px
+    rgba(21, 151, 212, 0.13);
+
+  transform:
+    translate(-50%, -50%)
+    translateY(-4px);
+}
+
+.chip:hover .icon-dot {
+  background:
+    rgba(21, 151, 212, 0.14);
+
+  transform: scale(1.08);
+}
+
+.chip:hover .chip-arrow {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+}
+
+
+/* =========================================================
+   ACTIVE
+   ========================================================= */
+
+.chip.active {
+  z-index: 20;
+
+  background:
+    rgba(255, 255, 255, 0.98);
+
+  border-color:
+    rgba(21, 151, 212, 0.65);
+
+  color: var(--blue-dark);
+
+  box-shadow:
+    0 0 0 4px
+      rgba(21, 151, 212, 0.07),
+    0 15px 38px
+      rgba(21, 151, 212, 0.18);
+
+  transform:
+    translate(-50%, -50%)
+    scale(1.08);
+}
+
+.chip.active .icon-dot {
+  background:
+    rgba(21, 151, 212, 0.15);
+
+  color: var(--blue-dark);
+
+  transform: scale(1.08);
+}
+
+.chip.active .chip-arrow {
+  opacity: 1;
+
+  transform:
+    translateX(0);
+}
+
+
+/* =========================================================
+   DIM OTHER CHIPS
+   ========================================================= */
+
+.stage.has-active
+.chip:not(.active) {
+  opacity: 0.28;
+}
+
+.stage.has-active
+.chip:not(.active):hover {
+  opacity: 1;
+}
+
+
+/* =========================================================
+   FLOAT ANIMATION
+   ========================================================= */
+
+@keyframes chip-float {
+  0%,
+  100% {
+    margin-top: 0;
+  }
+
+  50% {
+    margin-top: -7px;
+  }
+}
+
+.chip:nth-child(3n) {
+  animation-duration: 5.2s;
+}
+
+.chip:nth-child(4n) {
+  animation-duration: 4.6s;
+}
+
+.chip:nth-child(5n) {
+  animation-duration: 5.5s;
+}
+
+
+/* =========================================================
+   HINT
+   ========================================================= */
+
+.hint {
+  position: absolute;
+
+  z-index: 4;
+
+  left: 50%;
+  bottom: 8px;
+
+  transform:
+    translateX(-50%);
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  color: #91a2b1;
+
+  font-size: 10.5px;
+
+  white-space: nowrap;
+
+  opacity: 0.8;
+}
+
+.hint-pulse {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+
+  box-shadow:
+    0 0 0 4px
+    rgba(21, 151, 212, 0.08);
+
+  animation:
+    hint-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes hint-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(0.65);
+
+    opacity: 0.5;
+  }
+}
+
+
+/* =========================================================
+   DETAIL CARD
+   ========================================================= */
+
+.detail {
+  position: absolute;
+
+  z-index: 30;
+
+  left: 50%;
+  bottom: 4px;
+
+  width: min(90%, 650px);
+
+  transform:
+    translateX(-50%);
+
+  display: flex;
+
+  align-items: flex-start;
+
+  gap: 13px;
+
+  padding:
+    13px
+    15px;
+
+  border:
+    1px solid
+    rgba(21, 151, 212, 0.27);
+
+  border-radius: 17px;
+
+  background:
+    rgba(255, 255, 255, 0.94);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 18px 45px
+    rgba(30, 100, 150, 0.14);
+
+  animation:
+    detail-in
+    0.28s
+    cubic-bezier(
+      0.2,
+      0.8,
+      0.2,
+      1
+    );
+}
+
+@keyframes detail-in {
+  from {
+    opacity: 0;
+
+    transform:
+      translateX(-50%)
+      translateY(12px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateX(-50%)
+      translateY(0)
+      scale(1);
+  }
+}
+
+
+/* =========================================================
+   DETAIL ICON
+   ========================================================= */
+
+.detail-icon {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 37px;
+  height: 37px;
+
+  flex-shrink: 0;
+
+  border-radius: 11px;
+
+  background:
+    rgba(21, 151, 212, 0.10);
+
+  color: var(--blue);
+}
+
+
+/* =========================================================
+   DETAIL BODY
+   ========================================================= */
+
+.detail-body {
+  min-width: 0;
+
+  padding-top: 1px;
+}
+
+.detail-tag {
+  margin-bottom: 3px;
+
+  font-size: 8px;
+
+  font-weight: 750;
+
+  letter-spacing: 0.14em;
+
+  color: var(--blue);
+}
+
+.detail-body h4 {
+  margin: 0 0 4px;
+
+  font-family:
+    "Space Grotesk",
+    "Inter",
+    sans-serif;
+
+  font-size: 14px;
+
+  font-weight: 650;
+
+  color: var(--text-primary);
+}
+
+.detail-body p {
+  margin: 0;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+
+  color: var(--text-secondary);
+}
+
+
+/* =========================================================
+   CLOSE
+   ========================================================= */
+
+.detail-close {
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 28px;
+  height: 28px;
+
+  margin-left: auto;
+
+  flex-shrink: 0;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  color: #8a9aaa;
+
+  cursor: pointer;
+
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.detail-close:hover {
+  background:
+    rgba(21, 151, 212, 0.07);
+
+  color: var(--blue-dark);
+
+  transform: rotate(90deg);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 1100px) {
+  .ai-inner {
+    grid-template-columns:
+      0.75fr
+      1.25fr;
+
+    gap: 15px;
+  }
+
+  .stage {
+    min-height: 500px;
+  }
+
+  .robot-image {
+    width: 75%;
+    height: 85%;
+  }
+
+  .chip {
+    max-width: 180px;
+
+    font-size: 10px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 899px) {
+  .ai-section {
+    padding:
+      75px
+      20px;
+  }
+
+  .ai-inner {
+    grid-template-columns: 1fr;
+
+    gap: 45px;
+  }
+
+  .copy-col {
+    text-align: center;
+
+    padding: 0;
+  }
+
+  .eyebrow {
+    justify-content: center;
+  }
+
+  .ai-section h2 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .lede {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .subblock {
+    margin-left: auto;
+    margin-right: auto;
+
+    text-align: left;
+  }
+
+  .cta {
+    margin: 0 auto;
+  }
+
+  .service-count {
+    justify-content: center;
+  }
+
+  .stage {
+    width: 100%;
+
+    min-height: 520px;
+
+    max-width: 760px;
+
+    margin: 0 auto;
+  }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 600px) {
+  .ai-section {
+    padding:
+      60px
+      14px;
+  }
+
+  .ai-section h2 {
+    font-size: 38px;
+  }
+
+  .lede {
+    font-size: 15px;
+  }
+
+  .stage {
+    min-height: 450px;
+  }
+
+  .robot-image {
+    width: 82%;
+    height: 78%;
+  }
+
+  .stage-glow-one {
+    width: 350px;
+    height: 350px;
+  }
+
+  .chip {
+    max-width: 135px;
+
+    padding:
+      6px
+      8px
+      6px
+      6px;
+
+    font-size: 8.5px;
+
+    gap: 5px;
+  }
+
+  .icon-dot {
+    width: 19px;
+    height: 19px;
+  }
+
+  .chip-arrow {
+    display: none;
+  }
+
+  .hint {
+    display: none;
+  }
+
+  .detail {
+    width: 94%;
+
+    padding: 11px;
+  }
+
+  .detail-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .detail-body h4 {
+    font-size: 12px;
+  }
+
+  .detail-body p {
+    font-size: 10.5px;
+  }
+
+  .detail-tag {
+    font-size: 7px;
+  }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.chip:focus-visible,
+.cta:focus-visible,
+.detail-close:focus-visible {
+  outline:
+    2px solid
+    var(--blue);
+
+  outline-offset: 3px;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .chip,
+  .detail,
+  .robot-image,
+  .robot-light,
+  .stage-glow,
+  .eyebrow-dot,
+  .hint-pulse {
+    animation: none !important;
+  }
+
+  .chip,
+  .cta,
+  .detail-close,
+  .icon-dot {
+    transition: none !important;
+  }
+}

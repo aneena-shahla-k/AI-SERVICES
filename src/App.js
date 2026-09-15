@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Solutions from "./pages/Solutions";
 // import GrowthPlans from "./pages/GrowthPlans";
 import ProjectDetail from "./pages/ProjectDetail";
+import About from "./pages/About";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("home");
@@ -29,6 +30,7 @@ function App() {
       <main>
         {/* Fallback check: 'solutions' allengilum 'Solutions' enn vannalum open aakum */}
         {(currentPage === "home" || !currentPage) && <Home />}
+        {(currentPage === "about" || !currentPage) && <About />}
         {(currentPage === "solutions" || currentPage === "Solutions") && <Solutions onNavigate={handleNavigate} slug={selectedSlug} />}
         {currentPage === "details" && <ProjectDetail />}
       </main>

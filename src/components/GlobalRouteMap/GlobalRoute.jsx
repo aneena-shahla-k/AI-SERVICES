@@ -19,10 +19,9 @@ import berlin from "../../assets/images/berlin.jpg";
 import london from "../../assets/images/london.jpg";
 import singapore from "../../assets/images/singapore.jpg";
 
-import carSound from "../../assets/audio/car5.wav";
-
 /* =========================================================
    DESTINATIONS
+   Ordered path: Calicut -> Kochi -> Mumbai -> Hyderabad -> Delhi -> Dubai -> Singapore -> New York
 ========================================================= */
 
 const locations = [
@@ -33,20 +32,15 @@ const locations = [
     country: "INDIA",
     flag: "🇮🇳",
     subtitle: "Our Origin",
-    services: [
-      "Web Development",
-      "E-Commerce",
-      "AI Solutions",
-    ],
+    services: ["Web Development", "E-Commerce", "AI Solutions"],
     description:
       "Where our journey begins. We build digital solutions, AI systems and business technology.",
     image: kerala,
-    mapX: 58,
-    mapY: 66,
-    cardX: 57,
-    cardY: 65,
+    mapX: 63,
+    mapY: 63,
+    cardX: 63,
+    cardY: 72,
   },
-
   {
     id: "kochi",
     number: "02",
@@ -54,20 +48,15 @@ const locations = [
     country: "INDIA",
     flag: "🇮🇳",
     subtitle: "Innovation Hub",
-    services: [
-      "Digital Transformation",
-      "Cloud Solutions",
-      "AI & Automation",
-    ],
+    services: ["Digital Transformation", "Cloud Solutions", "AI"],
     description:
       "Custom software and digital transformation for modern enterprises.",
     image: london,
-    mapX: 53,
-    mapY: 60,
-    cardX: 44,
-    cardY: 57,
+    mapX: 64,
+    mapY: 67,
+    cardX: 64,
+    cardY: 77,
   },
-
   {
     id: "mumbai",
     number: "03",
@@ -75,62 +64,47 @@ const locations = [
     country: "INDIA",
     flag: "🇮🇳",
     subtitle: "Growth Hub",
-    services: [
-      "E-Commerce",
-      "ERP Systems",
-      "Business Automation",
-    ],
+    services: ["E-Commerce", "ERP Systems", "Automation"],
     description:
       "A growing technology hub connecting ambitious businesses with digital solutions.",
     image: mumbai,
-    mapX: 48,
-    mapY: 51,
-    cardX: 45,
-    cardY: 47,
+    mapX: 60,
+    mapY: 53,
+    cardX: 52,
+    cardY: 53,
   },
-
-  {
-    id: "delhi",
-    number: "04",
-    name: "DELHI",
-    country: "INDIA",
-    flag: "🇮🇳",
-    subtitle: "Technology Hub",
-    services: [
-      "Web Development",
-      "Mobile Apps",
-      "AI Solutions",
-    ],
-    description:
-      "Modern digital platforms and intelligent technology for growing companies.",
-    image: sydney,
-    mapX: 38,
-    mapY: 31,
-    cardX: 35,
-    cardY: 19,
-  },
-
   {
     id: "hyderabad",
-    number: "05",
+    number: "04",
     name: "HYDERABAD",
     country: "INDIA",
     flag: "🇮🇳",
     subtitle: "Enterprise Hub",
-    services: [
-      "Enterprise Solutions",
-      "Custom Software",
-      "IT Consulting",
-    ],
+    services: ["Enterprise Solutions", "Custom Software", "IT Consulting"],
     description:
       "Technology partnerships for enterprises seeking scalable digital systems.",
     image: berlin,
-    mapX: 24,
-    mapY: 38,
-    cardX: 29,
-    cardY: 39,
+    mapX: 64,
+    mapY: 52,
+    cardX: 72,
+    cardY: 52,
   },
-
+  {
+    id: "delhi",
+    number: "05",
+    name: "DELHI",
+    country: "INDIA",
+    flag: "🇮🇳",
+    subtitle: "Technology Hub",
+    services: ["Web Development", "Mobile Apps", "AI Solutions"],
+    description:
+      "Modern digital platforms and intelligent technology for growing companies.",
+    image: sydney,
+    mapX: 62,
+    mapY: 41,
+    cardX: 62,
+    cardY: 32,
+  },
   {
     id: "dubai",
     number: "06",
@@ -138,20 +112,15 @@ const locations = [
     country: "UAE",
     flag: "🇦🇪",
     subtitle: "Business Hub",
-    services: [
-      "Business Systems",
-      "AI Solutions",
-      "E-Commerce",
-    ],
+    services: ["Business Systems", "AI Solutions", "E-Commerce"],
     description:
       "Intelligent systems and digital transformation for ambitious businesses.",
     image: dubai,
-    mapX: 43,
-    mapY: 32,
-    cardX: 48,
-    cardY: 19,
+    mapX: 51,
+    mapY: 47,
+    cardX: 43,
+    cardY: 43,
   },
-
   {
     id: "singapore",
     number: "07",
@@ -159,70 +128,57 @@ const locations = [
     country: "SINGAPORE",
     flag: "🇸🇬",
     subtitle: "Digital Hub",
-    services: [
-      "E-Commerce",
-      "Mobile Apps",
-      "AI Solutions",
-    ],
+    services: ["Digital Commerce", "Mobile Apps", "AI Systems"],
     description:
       "Digital commerce, intelligent applications and AI-powered systems.",
     image: singapore,
-    mapX: 61,
-    mapY: 58,
-    cardX: 72,
-    cardY: 29,
+    mapX: 77,
+    mapY: 60,
+    cardX: 77,
+    cardY: 70,
   },
-
   {
     id: "new-york",
     number: "08",
     name: "NEW YORK",
     country: "USA",
     flag: "🇺🇸",
-    subtitle: "Digital Hub",
-    services: [
-      "Web & App Development",
-      "ERP Systems",
-      "Cloud Solutions",
-    ],
+    subtitle: "Global Hub",
+    services: ["Web & App Dev", "ERP Systems", "Cloud Solutions"],
     description:
       "High-performance digital products for businesses across North America.",
     image: newyork,
-    mapX: 78,
-    mapY: 67,
-    cardX: 80,
-    cardY: 55,
+    mapX: 25,
+    mapY: 36,
+    cardX: 25,
+    cardY: 26,
   },
 ];
 
 /* =========================================================
-   ROUTE
+   STRICT CONTINUOUS ROUTE PASSING EVERY PIN COORDINATE
 ========================================================= */
 
 const ROUTE_PATH = `
-  M 58 66
-  C 56 64, 54 62, 53 60
-  C 51 57, 49 54, 48 51
-  C 45 45, 41 37, 38 31
-  C 34 32, 29 34, 24 38
-  C 30 39, 39 36, 43 32
-  C 49 37, 55 46, 61 58
-  C 66 62, 72 64, 78 67
+  M 63 63
+  C 63.3 64.5, 63.7 65.8, 64 67
+  C 62.5 62, 61.2 57.5, 60 53
+  C 61.2 52.5, 62.5 52.2, 64 52
+  C 63.5 48, 62.8 44.5, 62 41
+  C 58.5 43, 54.5 45, 51 47
+  C 60 51.5, 68.5 56, 77 60
+  C 60 52, 42 44, 25 36
 `;
 
-/* =========================================================
-   LOCATION PROGRESS
-========================================================= */
-
 const LOCATION_PROGRESS = [
-  0.00,
-  0.08,
-  0.17,
-  0.31,
-  0.37,
-  0.53,
-  0.76,
-  1.00,
+  0.0,
+  0.05,
+  0.21,
+  0.28,
+  0.42,
+  0.58,
+  0.82,
+  1.0,
 ];
 
 /* =========================================================
@@ -233,330 +189,107 @@ export default function GlobalRoute() {
   const sectionRef = useRef(null);
   const routeRef = useRef(null);
   const cardRefs = useRef([]);
-  const audioRef = useRef(null);
 
-  const [vehicle, setVehicle] = useState({
-    x: 58,
-    y: 66,
-    angle: 0,
-  });
-
+  const [pinPosition, setPinPosition] = useState({ x: 63, y: 63 });
   const [activeLocation, setActiveLocation] = useState(0);
-
-  /* =======================================================
-     AUDIO
-  ======================================================= */
-
-  useEffect(() => {
-    const audio = new Audio(carSound);
-
-    audio.loop = true;
-    audio.volume = 0.5;
-    audio.preload = "auto";
-
-    audioRef.current = audio;
-
-    let stopTimer = null;
-
-    const handleScroll = () => {
-      if (!sectionRef.current || !audioRef.current) {
-        return;
-      }
-
-      const rect =
-        sectionRef.current.getBoundingClientRect();
-
-      const viewportHeight =
-        window.innerHeight;
-
-      const isSectionVisible =
-        rect.top < viewportHeight &&
-        rect.bottom > 0;
-
-      if (!isSectionVisible) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        return;
-      }
-
-      if (audioRef.current.paused) {
-        audioRef.current.play().catch(() => {});
-      }
-
-      clearTimeout(stopTimer);
-
-      stopTimer = setTimeout(() => {
-        if (audioRef.current) {
-          audioRef.current.pause();
-          audioRef.current.currentTime = 0;
-        }
-      }, 120);
-    };
-
-    window.addEventListener(
-      "scroll",
-      handleScroll,
-      { passive: true }
-    );
-
-    return () => {
-      window.removeEventListener(
-        "scroll",
-        handleScroll
-      );
-
-      clearTimeout(stopTimer);
-
-      if (audioRef.current) {
-        audioRef.current.pause();
-        audioRef.current.currentTime = 0;
-        audioRef.current = null;
-      }
-    };
-  }, []);
-
-  /* =======================================================
-     SCROLL
-  ======================================================= */
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: [
-      "start start",
-      "end end",
-    ],
+    offset: ["start start", "end end"],
   });
 
-  const smoothProgress = useSpring(
-    scrollYProgress,
-    {
-      stiffness: 75,
-      damping: 24,
-      mass: 0.25,
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 90,
+    damping: 26,
+    mass: 0.2,
+  });
+
+  const routeDashOffset = useTransform(smoothProgress, [0, 1], [1, 0]);
+
+  useMotionValueEvent(smoothProgress, "change", (progress) => {
+    const path = routeRef.current;
+    if (!path) return;
+
+    const totalLength = path.getTotalLength();
+    const distance = Math.min(progress * totalLength, totalLength);
+    const point = path.getPointAtLength(distance);
+
+    setPinPosition({ x: point.x, y: point.y });
+
+    let active = 0;
+    for (let i = 0; i < LOCATION_PROGRESS.length; i++) {
+      if (progress >= LOCATION_PROGRESS[i] - 0.03) {
+        active = i;
+      }
     }
-  );
-
-  const routeDashOffset = useTransform(
-    smoothProgress,
-    [0, 1],
-    [1, 0]
-  );
-
-  /* =======================================================
-     VEHICLE + ACTIVE LOCATION
-  ======================================================= */
-
-  useMotionValueEvent(
-    smoothProgress,
-    "change",
-    (progress) => {
-      const path = routeRef.current;
-
-      if (!path) return;
-
-      const totalLength =
-        path.getTotalLength();
-
-      const distance =
-        progress * totalLength;
-
-      const current =
-        path.getPointAtLength(
-          distance
-        );
-
-      const next =
-        path.getPointAtLength(
-          Math.min(
-            distance + 1,
-            totalLength
-          )
-        );
-
-      const angle =
-        Math.atan2(
-          next.y - current.y,
-          next.x - current.x
-        ) *
-        (180 / Math.PI);
-
-      setVehicle({
-        x: current.x,
-        y: current.y,
-        angle,
-      });
-
-      let active = 0;
-
-      LOCATION_PROGRESS.forEach(
-        (threshold, index) => {
-          if (progress >= threshold) {
-            active = index;
-          }
-        }
-      );
-
-      setActiveLocation(active);
-    }
-  );
-
-  /* =======================================================
-     DESTINATION CARD AUTO SCROLL
-  ======================================================= */
+    setActiveLocation(active);
+  });
 
   useEffect(() => {
-    const activeCard =
-      cardRefs.current[activeLocation];
+    const activeCard = cardRefs.current[activeLocation];
+    const container = document.querySelector(".destination-cards");
 
-    const container =
-      document.querySelector(
-        ".destination-cards"
-      );
-
-    if (
-      activeCard &&
-      container
-    ) {
-      const cardLeft =
-        activeCard.offsetLeft;
-
-      const cardWidth =
-        activeCard.offsetWidth;
-
-      const containerWidth =
-        container.offsetWidth;
+    if (activeCard && container) {
+      const cardLeft = activeCard.offsetLeft;
+      const cardWidth = activeCard.offsetWidth;
+      const containerWidth = container.offsetWidth;
 
       container.scrollTo({
-        left:
-          cardLeft -
-          containerWidth / 2 +
-          cardWidth / 2,
+        left: cardLeft - containerWidth / 2 + cardWidth / 2,
         behavior: "smooth",
       });
     }
   }, [activeLocation]);
 
-  /* =======================================================
-     INITIAL VEHICLE
-  ======================================================= */
-
   useEffect(() => {
     const path = routeRef.current;
-
     if (!path) return;
-
-    const point =
-      path.getPointAtLength(0);
-
-    setVehicle({
-      x: point.x,
-      y: point.y,
-      angle: 0,
-    });
+    const point = path.getPointAtLength(0);
+    setPinPosition({ x: point.x, y: point.y });
   }, []);
 
-  /* =======================================================
-     CARD SCROLL HELPERS
-  ======================================================= */
-
   const scrollDestinations = (direction) => {
-    const container =
-      document.querySelector(
-        ".destination-cards"
-      );
-
+    const container = document.querySelector(".destination-cards");
     if (!container) return;
-
-    const amount =
-      window.innerWidth <= 800
-        ? 240
-        : 340;
-
+    const amount = window.innerWidth <= 800 ? 210 : 320;
     container.scrollBy({
-      left:
-        direction === "next"
-          ? amount
-          : -amount,
+      left: direction === "next" ? amount : -amount,
       behavior: "smooth",
     });
   };
 
-  /* =======================================================
-     RENDER
-  ======================================================= */
-
   return (
-    <section
-      ref={sectionRef}
-      className="global-route"
-    >
+    <section ref={sectionRef} className="global-route">
       <div className="route-scroll">
-
         <div className="route-sticky">
 
-          {/* =================================================
-              WORLD MAP
-          ================================================= */}
-
-          <div className="world-map-layer">
-
-            <img
-              src={image}
-              alt=""
-              className="world-map-image"
-            />
-
-            <div className="map-vignette" />
-            <div className="map-grid" />
-
-          </div>
-
-          {/* =================================================
-              LEFT CONTENT
-          ================================================= */}
-
           <div className="route-content">
-
             <div className="route-eyebrow">
-
-              <span>
-                OUR GLOBAL ROUTE
-              </span>
-
+              <span>OUR GLOBAL ROUTE</span>
               <i />
-
             </div>
 
             <h2>
-              From Kerala
-              <br />
+              From Kerala<br />
               to the <em>World</em>
             </h2>
 
             <p className="route-lead">
-              One route. Many destinations.
-              <br />
+              One route. Many destinations.<br />
               Connected possibilities.
             </p>
 
             <p className="route-description">
-              We started in Kerala, grew
-              across India, and <br />
-              are now serving clients
-              worldwide. Our journey
+              We started in Kerala, grew across India, and <br />
+              are now serving clients worldwide. Our journey
               <br />
               continues, and so does yours.
             </p>
 
-            {/* ROUTE SELECTOR */}
-
             <div className="route-selector">
-
               <div
                 className={`route-selector-item ${
-                  activeLocation <= 1
-                    ? "active"
-                    : ""
+                  activeLocation <= 1 ? "active" : ""
                 }`}
               >
                 <span className="selector-dot" />
@@ -565,10 +298,7 @@ export default function GlobalRoute() {
 
               <div
                 className={`route-selector-item ${
-                  activeLocation >= 2 &&
-                  activeLocation <= 4
-                    ? "active"
-                    : ""
+                  activeLocation >= 2 && activeLocation <= 4 ? "active" : ""
                 }`}
               >
                 <span className="selector-dot" />
@@ -577,328 +307,91 @@ export default function GlobalRoute() {
 
               <div
                 className={`route-selector-item ${
-                  activeLocation >= 5
-                    ? "active"
-                    : ""
+                  activeLocation >= 5 ? "active" : ""
                 }`}
               >
                 <span className="selector-dot" />
                 World
               </div>
-
             </div>
-
-            {/* PROGRESS */}
-
-            <div className="route-progress">
-
-              <div className="route-play">
-                <span>↓</span>
-              </div>
-
-              <div className="route-progress-track">
-
-                <motion.div
-                  className="route-progress-fill"
-                  style={{
-                    scaleX:
-                      smoothProgress,
-                  }}
-                />
-
-              </div>
-
-              <span className="route-progress-label">
-                SCROLL TO EXPLORE
-              </span>
-
-            </div>
-
           </div>
 
-          {/* =================================================
-              SVG ROUTE
-          ================================================= */}
+          <div className="map-stage">
+            <img src={image} alt="Global Map" className="world-map-image" />
+            <div className="map-vignette" />
+            <div className="map-grid" />
 
-          <svg
-            className="route-svg"
-            viewBox="0 0 100 100"
-            preserveAspectRatio="none"
-          >
-
-            <path
-              ref={routeRef}
-              d={ROUTE_PATH}
-              className="route-base"
-            />
-
-            <motion.path
-              d={ROUTE_PATH}
-              className="route-active"
-              pathLength="1"
-              style={{
-                pathLength: 1,
-                strokeDasharray: 1,
-                strokeDashoffset:
-                  routeDashOffset,
-              }}
-            />
-
-            {/* =================================================
-                CAR
-            ================================================= */}
-
-            <g
-              className="route-car"
-              transform={`
-                translate(
-                  ${vehicle.x}
-                  ${vehicle.y}
-                )
-                rotate(
-                  ${vehicle.angle}
-                )
-              `}
+            <svg
+              className="route-svg"
+              viewBox="0 0 100 100"
+              preserveAspectRatio="none"
             >
+              <path ref={routeRef} d={ROUTE_PATH} className="route-base" />
 
-              <polygon
-                points="
-                  2.2,-0.9
-                  6,-2.2
-                  6,2.2
-                  2.2,0.9
-                "
-                className="car-beam"
+              <motion.path
+                d={ROUTE_PATH}
+                className="route-active"
+                pathLength="1"
+                style={{
+                  pathLength: 1,
+                  strokeDasharray: 1,
+                  strokeDashoffset: routeDashOffset,
+                }}
               />
 
-              <rect
-                x="-1.8"
-                y="-1.65"
-                width="1.1"
-                height="0.45"
-                rx="0.2"
-                className="car-wheel"
-              />
+              <g
+                className="route-marker-pin"
+                transform={`translate(${pinPosition.x}, ${pinPosition.y})`}
+              >
+                <circle cx="0" cy="0" r="1.3" fill="rgba(0, 240, 255, 0.4)" />
+                <path
+                  d="M 0 0 C -0.8 -1.1 -1.3 -1.8 -1.3 -2.7 C -1.3 -3.5 -0.7 -4.1 0 -4.1 C 0.7 -4.1 1.3 -3.5 1.3 -2.7 C 1.3 -1.8 0.8 -1.1 0 0 Z"
+                  fill="#00f0ff"
+                  stroke="#ffffff"
+                  strokeWidth="0.18"
+                />
+                <circle cx="0" cy="-2.7" r="0.45" fill="#02090d" />
+              </g>
+            </svg>
 
-              <rect
-                x="1.0"
-                y="-1.65"
-                width="1.1"
-                height="0.45"
-                rx="0.2"
-                className="car-wheel"
-              />
-
-              <rect
-                x="-1.8"
-                y="1.2"
-                width="1.1"
-                height="0.45"
-                rx="0.2"
-                className="car-wheel"
-              />
-
-              <rect
-                x="1.0"
-                y="1.2"
-                width="1.1"
-                height="0.45"
-                rx="0.2"
-                className="car-wheel"
-              />
-
-              <rect
-                className="car-body"
-                x="-2.2"
-                y="-1.35"
-                width="4.4"
-                height="2.7"
-                rx="0.9"
-              />
-
-              <path
-                className="car-windshield"
-                d="
-                  M -0.8 -0.95
-                  L 0.7 -0.95
-                  L 1.2 -0.6
-                  L 1.2 0.6
-                  L 0.7 0.95
-                  L -0.8 0.95
-                  L -1.2 0.7
-                  L -1.2 -0.7
-                  Z
-                "
-              />
-
-              <rect
-                className="car-roof"
-                x="-0.7"
-                y="-0.75"
-                width="1.6"
-                height="1.5"
-                rx="0.3"
-              />
-
-              <circle
-                cx="2.1"
-                cy="-0.9"
-                r="0.28"
-                className="car-headlight"
-              />
-
-              <circle
-                cx="2.1"
-                cy="0.9"
-                r="0.28"
-                className="car-headlight"
-              />
-
-              <rect
-                x="-2.25"
-                y="-1.1"
-                width="0.25"
-                height="0.55"
-                rx="0.1"
-                className="car-taillight"
-              />
-
-              <rect
-                x="-2.25"
-                y="0.55"
-                width="0.25"
-                height="0.55"
-                rx="0.1"
-                className="car-taillight"
-              />
-
-            </g>
-
-          </svg>
-
-          {/* =================================================
-              MAP POINTS
-          ================================================= */}
-
-          {locations.map(
-            (location, index) => (
+            {locations.map((location, index) => (
               <MapLocation
                 key={location.id}
                 location={location}
-                active={
-                  index === activeLocation
-                }
-                reached={
-                  index <= activeLocation
-                }
+                active={index === activeLocation}
+                reached={index <= activeLocation}
               />
-            )
-          )}
+            ))}
 
-          {/* =================================================
-              FLOATING LOCATION CARDS
-          ================================================= */}
-
-          {locations.map(
-            (location, index) => (
+            {locations.map((location, index) => (
               <FloatingLocationCard
                 key={location.id}
                 location={location}
-                active={
-                  index === activeLocation
-                }
-                reached={
-                  index <= activeLocation
-                }
+                active={index === activeLocation}
+                reached={index <= activeLocation}
               />
-            )
-          )}
-
-          {/* =================================================
-              JOURNEY NAVIGATION
-          ================================================= */}
-
-          <div className="journey-navigation">
-
-            <span className="journey-nav-title">
-              JOURNEY
-            </span>
-
-            <div className="journey-nav-line" />
-
-            {locations.map(
-              (location, index) => (
-                <div
-                  key={location.id}
-                  className={`journey-nav-item ${
-                    index === activeLocation
-                      ? "active"
-                      : ""
-                  }`}
-                >
-
-                  <span className="journey-nav-dot" />
-
-                  <div>
-
-                    <strong>
-                      {location.name}
-                    </strong>
-
-                    <small>
-                      {location.number}
-                    </small>
-
-                  </div>
-
-                </div>
-              )
-            )}
-
+            ))}
           </div>
 
-          {/* =================================================
-              DESTINATION STRIP
-          ================================================= */}
-
           <div className="destination-strip">
-
             <div className="destination-header">
-
               <div className="destination-heading">
-
-                <span className="destination-eyebrow">
-                  GLOBAL DESTINATIONS
-                </span>
-
+                <span className="destination-eyebrow">GLOBAL DESTINATIONS</span>
                 <h3>
-                  Explore our{" "}
-                  <em>locations.</em>
+                  Explore our <em>locations.</em>
                 </h3>
-
               </div>
 
               <div className="destination-controls">
-
                 <span className="destination-counter">
-
-                  {String(
-                    activeLocation + 1
-                  ).padStart(2, "0")}
-
+                  {String(activeLocation + 1).padStart(2, "0")}
                   <i>/</i>
-
-                  {String(
-                    locations.length
-                  ).padStart(2, "0")}
-
+                  {String(locations.length).padStart(2, "0")}
                 </span>
 
                 <button
                   className="destination-arrow"
-                  onClick={() =>
-                    scrollDestinations("prev")
-                  }
+                  onClick={() => scrollDestinations("prev")}
                   aria-label="Previous destinations"
                 >
                   ←
@@ -906,53 +399,32 @@ export default function GlobalRoute() {
 
                 <button
                   className="destination-arrow"
-                  onClick={() =>
-                    scrollDestinations("next")
-                  }
+                  onClick={() => scrollDestinations("next")}
                   aria-label="Next destinations"
                 >
                   →
                 </button>
-
               </div>
-
             </div>
 
             <div className="destination-slider">
-
               <div className="destination-cards">
-
-                {locations.map(
-                  (location, index) => (
-                    <div
-                      key={location.id}
-                      ref={(el) => {
-                        cardRefs.current[
-                          index
-                        ] = el;
-                      }}
-                    >
-
-                      <DestinationCard
-                        location={location}
-                        active={
-                          index ===
-                          activeLocation
-                        }
-                        reached={
-                          index <=
-                          activeLocation
-                        }
-                      />
-
-                    </div>
-                  )
-                )}
-
+                {locations.map((location, index) => (
+                  <div
+                    key={location.id}
+                    ref={(el) => {
+                      cardRefs.current[index] = el;
+                    }}
+                  >
+                    <DestinationCard
+                      location={location}
+                      active={index === activeLocation}
+                      reached={index <= activeLocation}
+                    />
+                  </div>
+                ))}
               </div>
-
             </div>
-
           </div>
 
         </div>
@@ -962,19 +434,13 @@ export default function GlobalRoute() {
 }
 
 /* =========================================================
-   MAP LOCATION
+   SUB-COMPONENTS
 ========================================================= */
 
-function MapLocation({
-  location,
-  active,
-  reached,
-}) {
+function MapLocation({ location, active, reached }) {
   return (
     <div
-      className={`map-point ${
-        active ? "active" : ""
-      } ${
+      className={`map-point ${active ? "active" : ""} ${
         reached ? "reached" : ""
       }`}
       style={{
@@ -982,32 +448,19 @@ function MapLocation({
         top: `${location.mapY}%`,
       }}
     >
-
       <div className="map-point-pulse" />
-
       <div className="map-point-ring">
         <span />
       </div>
-
     </div>
   );
 }
 
-/* =========================================================
-   FLOATING LOCATION CARD
-========================================================= */
-
-function FloatingLocationCard({
-  location,
-  active,
-  reached,
-}) {
+function FloatingLocationCard({ location, active, reached }) {
   return (
     <div
       data-location={location.id}
-      className={`floating-location-card ${
-        active ? "active" : ""
-      } ${
+      className={`floating-location-card ${active ? "active" : ""} ${
         reached ? "reached" : ""
       }`}
       style={{
@@ -1015,102 +468,45 @@ function FloatingLocationCard({
         top: `${location.cardY}%`,
       }}
     >
-
       <div className="floating-card-header">
-
-        <span className="floating-flag">
-          {location.flag}
-        </span>
-
-        <strong>
-          {location.name}
-        </strong>
-
-        <span className="floating-country">
-          / {location.country}
-        </span>
-
+        <span className="floating-flag">{location.flag}</span>
+        <strong>{location.name}</strong>
+        <span className="floating-country">/ {location.country}</span>
       </div>
 
       <div className="floating-services">
-
-        {location.services.map(
-          (service) => (
-            <span key={service}>
-              {service}
-            </span>
-          )
-        )}
-
+        {location.services.map((service) => (
+          <span key={service}>{service}</span>
+        ))}
       </div>
 
-      <div className="floating-arrow">
-        ↗
-      </div>
-
+      <div className="floating-arrow">↗</div>
     </div>
   );
 }
 
-/* =========================================================
-   DESTINATION CARD
-========================================================= */
-
-function DestinationCard({
-  location,
-  active,
-  reached,
-}) {
+function DestinationCard({ location, active, reached }) {
   return (
     <article
-      className={`destination-card ${
-        active ? "active" : ""
-      } ${
+      className={`destination-card ${active ? "active" : ""} ${
         reached ? "reached" : ""
       }`}
     >
-
       <div className="destination-card-info">
-
-        <span className="destination-number">
-          {location.number}
-        </span>
-
-        <h3>
-          {location.name}
-        </h3>
-
-        <span className="destination-subtitle">
-          {location.subtitle}
-        </span>
-
-        <p>
-          {location.description}
-        </p>
-
+        <span className="destination-number">{location.number}</span>
+        <h3>{location.name}</h3>
+        <span className="destination-subtitle">{location.subtitle}</span>
+        <p>{location.description}</p>
         <button>
-          View Details
-          <span>→</span>
+          View Details <span>→</span>
         </button>
-
       </div>
 
       <div className="destination-image">
-
-        <img
-          src={location.image}
-          alt={location.name}
-          loading="lazy"
-        />
-
+        <img src={location.image} alt={location.name} loading="lazy" />
         <div className="destination-image-overlay" />
-
-        <span className="destination-image-number">
-          {location.number}
-        </span>
-
+        <span className="destination-image-number">{location.number}</span>
       </div>
-
     </article>
   );
 }

@@ -1,0 +1,721 @@
+/* =========================================================
+   INDUSTRIES SECTION
+========================================================= */
+.industries-section {
+  position: relative;
+  width: 100%;
+  height: 900vh;
+  overflow: visible;
+  background:
+    radial-gradient(
+      circle at 72% 42%,
+      rgba(111, 190, 237, 0.18),
+      transparent 34%
+    ),
+    radial-gradient(
+      circle at 18% 78%,
+      rgba(175, 216, 241, 0.14),
+      transparent 32%
+    ),
+    linear-gradient(
+      180deg,
+      #f8fbfe 0%,
+      #ffffff 48%,
+      #f4f9fd 100%
+    );
+}
+
+/* =========================================================
+   STICKY SCREEN
+========================================================= */
+.industries-sticky {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.industries-sticky::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 750px;
+  height: 750px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(100, 188, 237, 0.10),
+    transparent 68%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* =========================================================
+   HEADING (DEFAULT DESKTOP)
+========================================================= */
+.industries-heading {
+  position: absolute;
+  left: 4.5%;
+  top: 7.5%;
+  width: 560px;
+  text-align: left;
+  z-index: 30;
+}
+
+.eyebrow {
+  display: block;
+  margin-bottom: 15px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4.5px;
+  color: #5991b8;
+}
+
+.industries-heading h2 {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: clamp(40px, 4.2vw, 58px);
+  line-height: 1.04;
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  color: #101c1e;
+}
+
+.industries-heading p {
+  width: 430px;
+  margin: 14px 0 0;
+  font-family: "Manrope", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5a7fa3;
+}
+
+/* =========================================================
+   TOP RIGHT PILL
+========================================================= */
+.top-pill {
+  position: absolute;
+  right: 4.5%;
+  top: 7%;
+  z-index: 40;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  padding: 10px 17px;
+  border: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 50px;
+  background: rgba(255, 255, 255, 0.70);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 12px 35px rgba(61, 126, 167, 0.08);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 10px;
+  color: #70879a;
+  white-space: nowrap;
+}
+
+.pill-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #e7f4fc;
+  color: #388dca;
+  font-size: 13px;
+}
+
+.top-pill b {
+  font-size: 12px;
+  font-weight: 500;
+  color: #71acd1;
+}
+
+/* =========================================================
+   STAGE
+========================================================= */
+.industries-stage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  pointer-events: none;
+}
+
+/* =========================================================
+   ROUTE CONTAINER
+========================================================= */
+.route-container {
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  bottom: 0%;
+  width: 90%;
+  height: 72%;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.route-svg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  overflow: visible;
+  z-index: 5;
+}
+
+.route-glow {
+  fill: none;
+  stroke: rgba(74, 164, 224, 0.16);
+  stroke-width: 64;
+  stroke-linecap: butt;
+  filter: blur(14px);
+}
+
+.route-road {
+  fill: none;
+  stroke: #dceaf3;
+  stroke-width: 52;
+  stroke-linecap: butt;
+  filter: drop-shadow(0 10px 22px rgba(55, 110, 150, 0.08));
+}
+
+.route-inner {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.98);
+  stroke-width: 40;
+  stroke-linecap: butt;
+}
+
+.route-center {
+  fill: none;
+  stroke: #74b6e3;
+  stroke-width: 2.5;
+  stroke-dasharray: 15 18;
+  stroke-linecap: butt;
+  opacity: 0.9;
+}
+
+/* =========================================================
+   PIN MARKER
+========================================================= */
+.moving-location-pin {
+  pointer-events: none;
+  transition: transform 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.pin-pulse-ring {
+  fill: rgba(30, 136, 229, 0.15);
+  stroke: rgba(30, 136, 229, 0.45);
+  stroke-width: 2;
+  animation: pulseRing 1.8s ease-out infinite;
+  transform-origin: 0px -18px;
+}
+
+@keyframes pulseRing {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.9;
+  }
+  100% {
+    transform: scale(1.6);
+    opacity: 0;
+  }
+}
+
+/* Desktop stationary points */
+.route-point {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  border: 3px solid #83bfe4;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 0 0 6px rgba(77, 164, 219, 0.07), 0 5px 16px rgba(60, 145, 204, 0.16);
+}
+
+.route-point span {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: #248fd3;
+}
+
+.point-2 { left: 19%; top: 54%; }
+.point-3 { left: 33%; top: 25%; }
+.point-4 { left: 50%; top: 10%; }
+.point-5 { left: 67%; top: 25%; }
+.point-6 { left: 81%; top: 54%; }
+
+/* =========================================================
+   CENTER INDUSTRY CARD
+========================================================= */
+.center-industry-card {
+  position: absolute;
+  left: 50%;
+  top: 67%;
+  z-index: 60;
+  width: 250px;
+  min-height: 310px;
+  transform: translate(-50%, -50%) translateY(24px) scale(0.95);
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.98);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 25px 65px rgba(52, 119, 166, 0.16);
+  pointer-events: auto;
+  transition:
+    opacity 0.4s ease,
+    transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.center-industry-card.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, -50%) translateY(0) scale(1);
+}
+
+.center-card-image {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+}
+
+.card-counter-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(20, 35, 55, 0.6);
+  backdrop-filter: blur(8px);
+  color: #ffffff;
+  font-size: 10px;
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 12px;
+  letter-spacing: 1px;
+}
+
+.center-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.center-industry-card.show .center-card-image img {
+  transform: scale(1.05);
+}
+
+.center-card-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 55px;
+  background: linear-gradient(transparent, rgba(255, 255, 255, 0.3));
+  pointer-events: none;
+}
+
+.center-card-content {
+  position: relative;
+  padding: 16px 20px 20px;
+  text-align: left;
+}
+
+.center-card-number {
+  margin-bottom: 3px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #438fc9;
+}
+
+.center-card-content h3 {
+  margin: 0 0 7px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: 1.2;
+  font-weight: 600;
+  color: #1c2d40;
+}
+
+.center-card-content p {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.55;
+  color: #708599;
+}
+
+.center-card-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-top: 14px;
+  border-radius: 50%;
+  background: #e6f3fc;
+  color: #378fca;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.center-industry-card:hover .center-card-arrow {
+  transform: translateX(4px);
+  background: #d8edf9;
+}
+
+.mobile-nav-controls {
+  display: none;
+}
+
+/* =========================================================
+   BOTTOM MESSAGE & DOTS
+========================================================= */
+.route-message {
+  position: absolute;
+  left: 50%;
+  bottom: 5.5%;
+  z-index: 20;
+  width: 330px;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.route-sub-label {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  color: #75a9ca;
+  margin-bottom: 10px;
+}
+
+.small-dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.dot-btn {
+  display: block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #c8d4dd;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.dot-btn.active {
+  width: 22px;
+  border-radius: 6px;
+  background: #2b8ed1;
+  box-shadow: 0 0 0 4px rgba(43, 142, 209, 0.18);
+}
+
+/* =========================================================
+   EXPLORE INDICATOR
+========================================================= */
+.explore {
+  position: absolute;
+  left: 50%;
+  bottom: 1.2%;
+  z-index: 40;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.explore span {
+  display: block;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 3.5px;
+  color: #76a9ca;
+}
+
+.explore div {
+  margin-top: 3px;
+  font-size: 16px;
+  color: #5ca6d8;
+  animation: arrowBounce 1.5s ease-in-out infinite;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); opacity: 0.65; }
+  50% { transform: translateY(5px); opacity: 1; }
+}
+
+/* =========================================================
+   MOBILE VIEW (LEFT-ALIGNED HEADER & PROMINENT LOCATION PIN)
+========================================================= */
+@media (max-width: 768px) {
+  .industries-section {
+    height: 420vh;
+  }
+
+  .industries-sticky {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100svh;
+    box-sizing: border-box;
+    /* Clean clearance below mobile navbar */
+    padding: 72px 22px 18px;
+    overflow: hidden;
+  }
+
+  .industries-sticky::before {
+    width: 380px;
+    height: 380px;
+    opacity: 0.7;
+  }
+
+  /* =======================================================
+     HEADING: STRICTLY LEFT ALIGNED
+  ======================================================= */
+  .industries-heading {
+    position: relative;
+    left: 0;
+    top: 0;
+    width: 100%;
+    text-align: left; /* Text side-loot aligned */
+    align-self: flex-start;
+    margin: 0 0 8px;
+    z-index: 20;
+  }
+
+  .eyebrow {
+    font-size: 9.5px;
+    letter-spacing: 2.5px;
+    margin-bottom: 6px;
+    text-align: left;
+  }
+
+  .industries-heading h2 {
+    font-size: 27px;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    text-align: left;
+  }
+
+  .industries-heading p {
+    width: 100%;
+    max-width: 320px;
+    margin: 6px 0 0;
+    font-size: 11px;
+    line-height: 1.45;
+    color: #6d8fa8;
+    text-align: left;
+  }
+
+  .top-pill,
+  .explore,
+  .desktop-only {
+    display: none !important;
+  }
+
+  /* Stage holding Card & Route */
+  .industries-stage {
+    position: relative;
+    width: 100%;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    margin: 5px 0;
+  }
+
+  /* =======================================================
+     ROUTE & PIN FOREGROUND VISIBILITY
+  ======================================================= */
+  .route-container {
+    position: absolute;
+    left: -20%;
+    right: -20%;
+    top: 25%;
+    transform: translateY(-46%);
+    width: 140%;
+    height: 120%;
+    opacity: 1 !important;
+    z-index: 15; /* Sits cleanly in visible layer */
+    pointer-events: none;
+  }
+
+  .route-svg {
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+  }
+
+  .route-glow {
+    stroke: rgba(65, 165, 230, 0.3);
+    stroke-width: 60;
+  }
+
+  .route-road {
+    stroke: #d0e4f2;
+    stroke-width: 48;
+    filter: drop-shadow(0 12px 24px rgba(45, 115, 165, 0.2));
+  }
+
+  .route-inner {
+    stroke: #ffffff;
+    stroke-width: 36;
+  }
+
+  .route-center {
+    stroke: #1e88e5;
+    stroke-width: 3;
+    stroke-dasharray: 14 16;
+    opacity: 1;
+  }
+
+  /* Scale pin larger so it is immediately noticeable on phone */
+  .moving-location-pin {
+    transform-origin: center center;
+  }
+
+  /* =======================================================
+     CENTER CARD
+  ======================================================= */
+  .center-industry-card {
+    position: relative;
+    left: auto;
+    top: auto;
+    transform: none !important;
+    width: 82%;
+    max-width: 285px;
+    min-height: auto;
+    border-radius: 20px;
+    border: 1.5px solid rgba(255, 255, 255, 0.98);
+    background: rgba(255, 255, 255, 0.97);
+    box-shadow: 0 20px 48px rgba(35, 105, 150, 0.24);
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 10;
+  }
+
+  .center-card-image {
+    height: 140px;
+  }
+
+  .center-card-content {
+    padding: 13px 16px 16px;
+    text-align: left;
+  }
+
+  .center-card-number {
+    font-size: 15px;
+  }
+
+  .center-card-content h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .center-card-content p {
+    font-size: 11px;
+    line-height: 1.45;
+  }
+
+  .center-card-arrow {
+    display: none;
+  }
+
+  /* Arrow navigation buttons */
+  .mobile-nav-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 0px;
+    right: 0px;
+    transform: translateY(-50%);
+    z-index: 30;
+    pointer-events: none;
+  }
+
+  .nav-arrow-btn {
+    pointer-events: auto;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 22px rgba(40, 110, 160, 0.22);
+    color: #1e88e5;
+    font-size: 24px;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+
+  /* Bottom Controls */
+  .route-message {
+    position: relative;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    width: 100%;
+    margin-top: 4px;
+    z-index: 30;
+  }
+
+  .route-sub-label {
+    font-size: 8.5px;
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+  }
+
+  .small-dots {
+    gap: 6px;
+  }
+
+  .dot-btn {
+    width: 6px;
+    height: 6px;
+  }
+
+  .dot-btn.active {
+    width: 20px;
+  }
+}

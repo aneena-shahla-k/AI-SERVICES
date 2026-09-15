@@ -1,160 +1,124 @@
-/* =========================================================
-   GOOGLE FONTS
-========================================================= */
-
 @import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
 
 /* =========================================================
-   GLOBAL ROUTE
+   CONTAINER & LOCK SETUP
 ========================================================= */
 
 .global-route {
   position: relative;
   width: 100%;
   max-width: 100vw;
-
   background: #02090d;
   color: #ffffff;
-
   overflow-x: clip;
   overflow-y: visible;
-
   font-family: "Manrope", sans-serif;
-  font-style: normal;
-
   -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
-
-/* =========================================================
-   SCROLL SPACE
-========================================================= */
 
 .route-scroll {
   position: relative;
-
   width: 100%;
   max-width: 100vw;
-
-  height: 300vh;
+  height: 480vh;
 }
-
-/* =========================================================
-   STICKY MAP
-========================================================= */
 
 .route-sticky {
   position: sticky;
   top: 0;
-
   width: 100%;
   max-width: 100vw;
-
   height: 100vh;
-  min-height: 640px;
-
+  min-height: 600px;
   overflow: hidden;
-
   background:
-    radial-gradient(
-      circle at 63% 43%,
-      rgba(0, 240, 255, 0.08),
-      transparent 30%
-    ),
-    radial-gradient(
-      circle at 78% 15%,
-      rgba(36, 120, 210, 0.12),
-      transparent 30%
-    ),
+    radial-gradient(circle at 63% 43%, rgba(0, 240, 255, 0.08), transparent 30%),
+    radial-gradient(circle at 78% 15%, rgba(36, 120, 210, 0.12), transparent 30%),
     #02090d;
-
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-
   isolation: isolate;
 }
 
 /* =========================================================
-   WORLD MAP
+   MAP STAGE
 ========================================================= */
 
-.world-map-layer {
+.map-stage {
   position: absolute;
-  inset: 0;
-
-  z-index: 1;
-
-  pointer-events: none;
-  overflow: hidden;
+  right: 2%;
+  top: 7%;
+  width: 68%;
+  height: 66%;
+  overflow: visible;
+  z-index: 10;
 }
 
 .world-map-image {
   position: absolute;
-
-  width: 74%;
-  height: 73%;
-
-  right: 1%;
-  top: 0;
-
+  inset: 0;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
+  border-radius: 12px;
+  pointer-events: none;
 }
-
-/* =========================================================
-   MAP VIGNETTE
-========================================================= */
 
 .map-vignette {
   position: absolute;
   inset: 0;
-
+  border-radius: 12px;
+  pointer-events: none;
   background:
-    linear-gradient(
-      90deg,
-      #02090d 0%,
-      rgba(2, 9, 13, 0.94) 13%,
-      rgba(2, 9, 13, 0.48) 31%,
-      rgba(2, 9, 13, 0.04) 58%,
-      rgba(2, 9, 13, 0.12) 100%
-    ),
-    linear-gradient(
-      180deg,
-      rgba(2, 9, 13, 0.5) 0%,
-      transparent 25%,
-      transparent 67%,
-      rgba(2, 9, 13, 0.98) 88%
-    );
+    linear-gradient(90deg, #02090d 0%, rgba(2, 9, 13, 0.85) 12%, rgba(2, 9, 13, 0.15) 35%, transparent 60%),
+    linear-gradient(180deg, rgba(2, 9, 13, 0.45) 0%, transparent 25%, transparent 70%, rgba(2, 9, 13, 0.95) 100%);
 }
-
-/* =========================================================
-   MAP GRID
-========================================================= */
 
 .map-grid {
   position: absolute;
   inset: 0;
-
   opacity: 0.05;
-
+  pointer-events: none;
   background-image:
-    linear-gradient(
-      rgba(140, 210, 255, 0.4) 1px,
-      transparent 1px
-    ),
-    linear-gradient(
-      90deg,
-      rgba(140, 210, 255, 0.4) 1px,
-      transparent 1px
-    );
-
+    linear-gradient(rgba(140, 210, 255, 0.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(140, 210, 255, 0.4) 1px, transparent 1px);
   background-size: 80px 80px;
+}
 
-  mask-image:
-    radial-gradient(
-      ellipse at center,
-      black 0%,
-      transparent 70%
-    );
+/* =========================================================
+   SVG ROUTE & PIN
+========================================================= */
+
+.route-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 12;
+  overflow: visible;
+  pointer-events: none;
+}
+
+.route-base {
+  fill: none;
+  stroke: rgba(0, 195, 255, 0.2);
+  stroke-width: 0.22;
+  vector-effect: non-scaling-stroke;
+  stroke-dasharray: 2 2.5;
+}
+
+.route-active {
+  fill: none;
+  stroke: #00f0ff;
+  stroke-width: 0.38;
+  vector-effect: non-scaling-stroke;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 4px rgba(0, 240, 255, 0.85));
+}
+
+.route-marker-pin {
+  pointer-events: none;
+  transition: transform 0.04s linear;
 }
 
 /* =========================================================
@@ -163,379 +127,100 @@
 
 .route-content {
   position: absolute;
-
   left: 4.2%;
   top: 14%;
-
-  width: 350px;
+  width: 340px;
   max-width: 90vw;
-
   z-index: 30;
-
   pointer-events: auto;
 }
-
-/* =========================================================
-   EYEBROW
-========================================================= */
 
 .route-eyebrow {
   display: flex;
   align-items: center;
-  gap: 13px;
-
-  margin-bottom: 20px;
-
-  font-family: "Manrope", sans-serif;
+  gap: 12px;
+  margin-bottom: 18px;
   font-size: 9px;
   font-weight: 700;
-  font-style: normal;
-
   letter-spacing: 0.22em;
-
   color: #8b9794;
 }
 
 .route-eyebrow i {
-  width: 47px;
+  width: 44px;
   height: 1px;
-
   background: rgba(255, 255, 255, 0.24);
 }
 
-/* =========================================================
-   MAIN HEADING
-========================================================= */
-
 .route-content h2 {
   margin: 0;
-
   font-family: "Playfair Display", serif;
-
-  font-size: clamp(
-    40px,
-    4.4vw,
-    58px
-  );
-
+  font-size: clamp(38px, 4vw, 54px);
   line-height: 0.98;
-
   letter-spacing: -0.035em;
-
   font-weight: 500;
-  font-style: normal;
-
   color: #f5f7f4;
-
-  text-rendering: optimizeLegibility;
 }
 
 .route-content h2 em {
-  font-family: "Playfair Display", serif;
-
   font-style: italic;
   font-weight: 400;
-
   color: #00f0ff;
-
-  text-shadow:
-    0 0 24px rgba(0, 240, 255, 0.35);
+  text-shadow: 0 0 24px rgba(0, 240, 255, 0.35);
 }
 
-/* =========================================================
-   LEAD TEXT
-========================================================= */
-
 .route-lead {
-  margin: 18px 0 0;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 15px;
+  margin: 16px 0 0;
+  font-size: 14px;
   font-weight: 500;
-
-  line-height: 1.55;
-
-  letter-spacing: -0.015em;
-
+  line-height: 1.5;
   color: #d5dcd8;
 }
 
-/* =========================================================
-   DESCRIPTION
-========================================================= */
-
 .route-description {
   max-width: 290px;
-
   margin: 14px 0 0;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 10px;
   font-weight: 400;
-
   line-height: 1.7;
-
-  letter-spacing: 0;
-
   color: #7d8985;
 }
-
-/* =========================================================
-   ROUTE SELECTOR
-========================================================= */
 
 .route-selector {
   display: flex;
   align-items: center;
-
   width: fit-content;
-
-  margin-top: 16px;
+  margin-top: 18px;
   padding: 3px;
-
   border: 1px solid rgba(255, 255, 255, 0.15);
-
   border-radius: 50px;
-
   background: rgba(255, 255, 255, 0.035);
-
   backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
 }
 
 .route-selector-item {
   display: flex;
   align-items: center;
-
   gap: 7px;
-
-  padding: 7px 12px;
-
+  padding: 6px 12px;
   border-radius: 50px;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 9px;
   font-weight: 600;
-
-  letter-spacing: 0.01em;
-
   color: #8d9794;
-
-  transition:
-    background 0.35s ease,
-    color 0.35s ease,
-    box-shadow 0.35s ease;
+  transition: all 0.35s ease;
 }
 
 .route-selector-item.active {
   color: #021217;
-
   background: #00f0ff;
-
-  box-shadow:
-    0 0 20px rgba(0, 240, 255, 0.4);
+  box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
 }
 
 .selector-dot {
   width: 6px;
   height: 6px;
-
   border: 1px solid currentColor;
-
   border-radius: 50%;
-}
-
-/* =========================================================
-   SCROLL INDICATOR
-========================================================= */
-
-.route-progress {
-  display: flex;
-  align-items: center;
-
-  gap: 11px;
-
-  margin-top: 20px;
-}
-
-.route-play {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 34px;
-  height: 34px;
-
-  flex: 0 0 auto;
-
-  border: 1px solid rgba(255, 255, 255, 0.22);
-
-  border-radius: 50%;
-
-  color: #ffffff;
-
-  font-family: "Manrope", sans-serif;
-  font-size: 11px;
-
-  background: rgba(255, 255, 255, 0.025);
-}
-
-.route-progress-track {
-  position: relative;
-
-  width: 100px;
-  height: 1px;
-
-  overflow: hidden;
-
-  background: rgba(255, 255, 255, 0.18);
-}
-
-.route-progress-fill {
-  width: 100%;
-  height: 100%;
-
-  transform-origin: left;
-
-  background: #00f0ff;
-
-  box-shadow:
-    0 0 10px rgba(0, 240, 255, 0.7);
-}
-
-.route-progress-label {
-  color: #89928f;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 7px;
-  font-weight: 700;
-
-  letter-spacing: 0.16em;
-
-  white-space: nowrap;
-}
-
-/* =========================================================
-   ROUTE SVG
-========================================================= */
-
-.route-svg {
-  position: absolute;
-
-  z-index: 12;
-
-  width: 78%;
-  height: 79%;
-
-  right: 2%;
-  top: 1%;
-
-  overflow: visible;
-
-  pointer-events: none;
-}
-
-.route-base {
-  fill: none;
-
-  stroke: rgba(0, 195, 255, 0.2);
-
-  stroke-width: 0.32;
-
-  vector-effect: non-scaling-stroke;
-
-  stroke-linecap: round;
-
-  stroke-dasharray: 2 3;
-}
-
-.route-active {
-  fill: none;
-
-  stroke: #00f0ff;
-
-  stroke-width: 0.55;
-
-  vector-effect: non-scaling-stroke;
-
-  stroke-linecap: round;
-
-  filter:
-    drop-shadow(
-      0 0 4px rgba(0, 240, 255, 0.95)
-    )
-    drop-shadow(
-      0 0 14px rgba(0, 240, 255, 0.5)
-    );
-}
-
-/* =========================================================
-   CAR
-========================================================= */
-
-.route-car {
-  overflow: visible;
-}
-
-.car-beam {
-  fill: rgba(0, 240, 255, 0.25);
-
-  filter: blur(0.6px);
-}
-
-.car-wheel {
-  fill: #061118;
-
-  stroke: #254656;
-
-  stroke-width: 0.1;
-}
-
-.car-body {
-  fill: #00e1ff;
-
-  stroke: #ffffff;
-
-  stroke-width: 0.25;
-
-  filter:
-    drop-shadow(
-      0 0 5px rgba(0, 240, 255, 0.8)
-    );
-}
-
-.car-windshield {
-  fill: #041922;
-
-  stroke: rgba(255, 255, 255, 0.4);
-
-  stroke-width: 0.12;
-}
-
-.car-roof {
-  fill: #032b38;
-}
-
-.car-headlight {
-  fill: #ffffff;
-
-  filter:
-    drop-shadow(
-      0 0 4px #00f0ff
-    );
-}
-
-.car-taillight {
-  fill: #ff2a5f;
-
-  filter:
-    drop-shadow(
-      0 0 2px #ff2a5f
-    );
 }
 
 /* =========================================================
@@ -544,98 +229,60 @@
 
 .map-point {
   position: absolute;
-
   z-index: 20;
-
-  width: 22px;
-  height: 22px;
-
-  transform:
-    translate(-50%, -50%);
-
+  width: 18px;
+  height: 18px;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-
   pointer-events: none;
 }
 
 .map-point-ring {
-  width: 10px;
-  height: 10px;
-
+  width: 8px;
+  height: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-
   border: 1px solid rgba(0, 240, 255, 0.45);
-
   border-radius: 50%;
-
   background: rgba(2, 16, 25, 0.85);
-
-  transition:
-    width 0.4s ease,
-    height 0.4s ease,
-    box-shadow 0.4s ease;
+  transition: all 0.3s ease;
 }
 
 .map-point-ring span {
-  width: 4px;
-  height: 4px;
-
+  width: 3px;
+  height: 3px;
   border-radius: 50%;
-
   background: #00f0ff;
-}
-
-.map-point.reached .map-point-ring {
-  border-color: rgba(0, 240, 255, 0.7);
 }
 
 .map-point.active .map-point-ring {
-  width: 20px;
-  height: 20px;
-
+  width: 14px;
+  height: 14px;
   border-color: #ffffff;
-
   background: #00f0ff;
-
-  box-shadow:
-    0 0 12px #00f0ff,
-    0 0 28px #00f0ff,
-    0 0 50px rgba(0, 240, 255, 0.9);
-
-  animation:
-    bulbBlueFlash 1.5s infinite alternate;
+  box-shadow: 0 0 10px #00f0ff, 0 0 22px rgba(0, 240, 255, 0.8);
 }
 
 .map-point.active .map-point-ring span {
-  width: 6px;
-  height: 6px;
-
+  width: 5px;
+  height: 5px;
   background: #ffffff;
-
-  box-shadow:
-    0 0 8px #ffffff;
 }
 
 .map-point-pulse {
   position: absolute;
-
-  width: 25px;
-  height: 25px;
-
+  width: 20px;
+  height: 20px;
   border: 1px solid rgba(0, 240, 255, 0.55);
-
   border-radius: 50%;
-
   opacity: 0;
 }
 
 .map-point.active .map-point-pulse {
-  animation:
-    locationPulse 2s ease-out infinite;
+  animation: locationPulse 2s ease-out infinite;
 }
 
 @keyframes locationPulse {
@@ -643,12 +290,10 @@
     transform: scale(0.5);
     opacity: 0.85;
   }
-
   70% {
-    transform: scale(1.9);
+    transform: scale(1.8);
     opacity: 0;
   }
-
   100% {
     opacity: 0;
   }
@@ -660,1314 +305,504 @@
 
 .floating-location-card {
   position: absolute;
-
   z-index: 25;
-
-  width: 155px;
-  min-height: 75px;
-
-  padding: 10px 12px;
-
+  width: 120px;
+  min-height: 58px;
+  padding: 6px 8px;
   box-sizing: border-box;
-
-  transform:
-    translate(-50%, -50%);
-
+  transform: translate(-50%, -50%);
   border: 1px solid rgba(0, 210, 255, 0.2);
-
-  border-radius: 11px;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(7, 24, 34, 0.90),
-      rgba(2, 13, 20, 0.75)
-    );
-
-  box-shadow:
-    0 12px 35px rgba(0, 0, 0, 0.35);
-
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-
-  opacity: 0.72;
-
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease,
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.floating-location-card.reached {
-  border-color:
-    rgba(0, 240, 255, 0.35);
+  border-radius: 8px;
+  background: linear-gradient(135deg, rgba(7, 24, 34, 0.9), rgba(2, 13, 20, 0.75));
+  backdrop-filter: blur(14px);
+  opacity: 0.55;
+  pointer-events: none;
+  transition: all 0.3s ease;
 }
 
 .floating-location-card.active {
   opacity: 1;
-
   z-index: 35;
-
   border-color: #00f0ff;
-
-  background:
-    linear-gradient(
-      135deg,
-      rgba(10, 36, 50, 0.96),
-      rgba(3, 19, 29, 0.92)
-    );
-
-  transform:
-    translate(-50%, -50%)
-    scale(1.04);
-
-  box-shadow:
-    0 0 18px rgba(0, 240, 255, 0.55),
-    0 0 35px rgba(0, 240, 255, 0.3),
-    inset 0 0 15px rgba(0, 240, 255, 0.25);
-
-  filter:
-    drop-shadow(
-      0 0 10px rgba(0, 240, 255, 0.65)
-    );
+  transform: translate(-50%, -50%) scale(1.04);
+  box-shadow: 0 0 14px rgba(0, 240, 255, 0.45);
 }
 
 .floating-card-header {
   display: flex;
   align-items: center;
-
-  gap: 6px;
-
+  gap: 5px;
   white-space: nowrap;
-
-  font-family: "Manrope", sans-serif;
 }
 
 .floating-flag {
-  font-size: 13px;
-
-  line-height: 1;
+  font-size: 11px;
 }
 
 .floating-card-header strong {
   color: #e9efec;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 8px;
+  font-size: 7.5px;
   font-weight: 700;
-
-  letter-spacing: 0.05em;
 }
 
-.floating-location-card.active
-.floating-card-header strong {
+.floating-location-card.active .floating-card-header strong {
   color: #00f0ff;
-
-  text-shadow:
-    0 0 8px rgba(0, 240, 255, 0.85);
 }
 
 .floating-country {
   color: #778580;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 7px;
-  font-weight: 500;
+  font-size: 6.5px;
 }
 
 .floating-services {
   display: flex;
   flex-direction: column;
-
-  gap: 3px;
-
-  margin-top: 8px;
+  gap: 2px;
+  margin-top: 5px;
 }
 
 .floating-services span {
   color: #7f8d88;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 7px;
-  font-weight: 400;
+  font-size: 6.5px;
 }
 
 .floating-arrow {
   position: absolute;
-
-  right: 9px;
-  bottom: 9px;
-
+  right: 6px;
+  bottom: 6px;
+  width: 15px;
+  height: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 19px;
-  height: 19px;
-
   border: 1px solid rgba(255, 255, 255, 0.16);
-
   border-radius: 50%;
-
   color: #9ba7a2;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 9px;
+  font-size: 8px;
 }
 
-.floating-location-card.active
-.floating-arrow {
+.floating-location-card.active .floating-arrow {
   border-color: #00f0ff;
-
   color: #00f0ff;
 }
 
 /* =========================================================
-   JOURNEY NAVIGATION
-========================================================= */
-
-.journey-navigation {
-  position: absolute;
-
-  z-index: 40;
-
-  right: 3.6%;
-  top: 25%;
-
-  width: 110px;
-
-  font-family: "Manrope", sans-serif;
-}
-
-.journey-nav-title {
-  color: #68746f;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 7px;
-  font-weight: 700;
-
-  letter-spacing: 0.18em;
-}
-
-.journey-nav-line {
-  position: absolute;
-
-  left: 3px;
-  top: 30px;
-  bottom: 16px;
-
-  width: 1px;
-
-  background:
-    rgba(255, 255, 255, 0.12);
-}
-
-.journey-nav-item {
-  position: relative;
-
-  display: flex;
-  align-items: center;
-
-  gap: 11px;
-
-  margin-top: 18px;
-
-  opacity: 0.35;
-
-  transition:
-    opacity 0.4s ease;
-}
-
-.journey-nav-item.active {
-  opacity: 1;
-}
-
-.journey-nav-dot {
-  position: relative;
-
-  z-index: 2;
-
-  width: 7px;
-  height: 7px;
-
-  flex: 0 0 auto;
-
-  border: 1px solid #73807a;
-
-  border-radius: 50%;
-
-  background: #02090d;
-}
-
-.journey-nav-item.active
-.journey-nav-dot {
-  width: 9px;
-  height: 9px;
-
-  margin-left: -1px;
-
-  background: #00f0ff;
-
-  border-color: #ffffff;
-
-  box-shadow:
-    0 0 14px rgba(0, 240, 255, 0.8);
-}
-
-.journey-nav-item strong {
-  display: block;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 8px;
-  font-weight: 600;
-
-  color: #9ca8a3;
-}
-
-.journey-nav-item.active strong {
-  color: #ffffff;
-}
-
-.journey-nav-item small {
-  display: block;
-
-  margin-top: 3px;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 7px;
-  font-weight: 500;
-
-  color: #59645f;
-}
-
-/* =========================================================
-   DESTINATION STRIP
+   BOTTOM DESTINATION STRIP
 ========================================================= */
 
 .destination-strip {
   position: absolute;
-
-  z-index: 60;
-
   left: 0;
   right: 0;
   bottom: 0;
-
+  z-index: 60;
   width: 100%;
-  max-width: 100vw;
-
+  padding: 12px 4% 10px;
   box-sizing: border-box;
-
-  padding:
-    14px 4.2% 12px;
-
-  border-top:
-    1px solid rgba(255, 255, 255, 0.10);
-
-  background:
-    linear-gradient(
-      180deg,
-      rgba(2, 10, 14, 0.85),
-      rgba(2, 10, 14, 0.98)
-    );
-
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(180deg, rgba(2, 10, 14, 0.85), rgba(2, 10, 14, 0.98));
   backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-
-  box-shadow:
-    0 -15px 50px rgba(0, 0, 0, 0.35);
-
-  overflow: hidden;
 }
-
-/* =========================================================
-   DESTINATION HEADER
-========================================================= */
 
 .destination-header {
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
-
   max-width: 1500px;
-
-  margin: 0 auto 10px;
-
-  padding: 0 2px;
-}
-
-.destination-heading {
-  min-width: 0;
+  margin: 0 auto 8px;
 }
 
 .destination-eyebrow {
   display: block;
-
-  margin-bottom: 4px;
-
+  margin-bottom: 3px;
   color: #71807a;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 7px;
   font-weight: 700;
-
-  letter-spacing: 0.20em;
+  letter-spacing: 0.2em;
 }
 
 .destination-header h3 {
   margin: 0;
-
   color: #e7eeea;
-
   font-family: "Playfair Display", serif;
-
-  font-size: 17px;
-
+  font-size: 16px;
   font-weight: 500;
-
-  line-height: 1.1;
-
-  letter-spacing: -0.025em;
 }
 
 .destination-header h3 em {
   color: #00f0ff;
-
-  font-family: "Playfair Display", serif;
-
   font-style: italic;
-
-  font-weight: 400;
 }
-
-/* =========================================================
-   DESTINATION CONTROLS
-========================================================= */
 
 .destination-controls {
   display: flex;
   align-items: center;
-
   gap: 7px;
-
-  flex: 0 0 auto;
 }
 
 .destination-counter {
-  margin-right: 6px;
-
+  margin-right: 4px;
   color: #75827d;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 8px;
   font-weight: 600;
-
-  letter-spacing: 0.08em;
 }
 
 .destination-counter i {
-  margin: 0 4px;
-
+  margin: 0 3px;
   color: #3d4844;
-
   font-style: normal;
 }
 
 .destination-arrow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  width: 28px;
-  height: 28px;
-
+  width: 26px;
+  height: 26px;
   border: 1px solid rgba(255, 255, 255, 0.14);
-
   border-radius: 50%;
-
-  background:
-    rgba(255, 255, 255, 0.035);
-
+  background: rgba(255, 255, 255, 0.035);
   color: #c4cfca;
-
-  font-family: "Manrope", sans-serif;
-
-  font-size: 12px;
-
+  font-size: 11px;
   cursor: pointer;
-
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease,
-    transform 0.25s ease;
+  transition: all 0.25s ease;
 }
 
 .destination-arrow:hover {
   background: #00f0ff;
-
   border-color: #00f0ff;
-
   color: #021217;
-
-  transform: translateY(-1px);
 }
 
-/* =========================================================
-   DESTINATION SLIDER
-========================================================= */
-
 .destination-slider {
-  position: relative;
-
   max-width: 1500px;
   width: 100%;
-
   margin: 0 auto;
-
   overflow: hidden;
 }
 
 .destination-cards {
   display: flex;
-
   gap: 12px;
-
   width: 100%;
-
   overflow-x: auto;
   overflow-y: hidden;
-
   scroll-behavior: smooth;
-
   scrollbar-width: none;
-
-  padding:
-    4px 2px 6px;
-
+  padding: 4px 2px;
   box-sizing: border-box;
-
-  -ms-overflow-style: none;
 }
 
 .destination-cards::-webkit-scrollbar {
   display: none;
 }
 
-/* =========================================================
-   DESTINATION CARD
-========================================================= */
-
 .destination-card {
   position: relative;
-
-  flex: 0 0 310px;
-
-  width: 310px;
-  min-width: 310px;
-  max-width: 310px;
-
-  height: 108px;
-  min-height: 108px;
-
+  flex: 0 0 300px;
+  width: 300px;
+  height: 100px;
   box-sizing: border-box;
-
   display: grid;
-
-  grid-template-columns:
-    minmax(0, 1fr)
-    95px;
-
+  grid-template-columns: minmax(0, 1fr) 90px;
   gap: 10px;
-
   padding: 8px;
-
-  border:
-    1px solid rgba(255, 255, 255, 0.09);
-
+  border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 10px;
-
-  background:
-    rgba(255, 255, 255, 0.025);
-
-  transition:
-    background 0.4s ease,
-    border-color 0.4s ease,
-    box-shadow 0.4s ease;
-}
-
-.destination-card.reached {
-  border-color:
-    rgba(0, 240, 255, 0.25);
+  background: rgba(255, 255, 255, 0.025);
+  transition: all 0.35s ease;
 }
 
 .destination-card.active {
-  background:
-    rgba(0, 240, 255, 0.12);
-
+  background: rgba(0, 240, 255, 0.12);
   border-color: #00f0ff;
-
-  box-shadow:
-    0 0 16px rgba(0, 240, 255, 0.4),
-    0 0 35px rgba(0, 240, 255, 0.18),
-    inset 0 0 12px rgba(0, 240, 255, 0.18);
-}
-
-.destination-card::before {
-  content: "";
-
-  position: absolute;
-
-  left: 12px;
-  right: 12px;
-  top: -1px;
-
-  height: 2px;
-
-  border-radius: 2px;
-
-  background: transparent;
-}
-
-.destination-card.active::before {
-  background: #ffffff;
-
-  height: 2.5px;
-
-  box-shadow:
-    0 0 10px #00f0ff;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.35);
 }
 
 .destination-card-info {
-  min-width: 0;
-
   display: flex;
   flex-direction: column;
-
   justify-content: space-between;
 }
 
 .destination-number {
-  display: block;
-
-  margin-bottom: 3px;
-
   color: #38bdf8;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 7px;
   font-weight: 700;
-
-  letter-spacing: 0.08em;
 }
 
 .destination-card h3 {
   margin: 0;
-
   color: #f0f4f1;
-
   font-family: "Playfair Display", serif;
-
-  font-size: 15px;
-
-  line-height: 1;
-
-  font-weight: 500;
-
-  letter-spacing: -0.02em;
-
-  white-space: nowrap;
-
-  overflow: hidden;
-
-  text-overflow: ellipsis;
+  font-size: 14px;
 }
 
 .destination-card.active h3 {
   color: #00f0ff;
-
-  text-shadow:
-    0 0 8px rgba(0, 240, 255, 0.7);
 }
 
 .destination-subtitle {
-  display: block;
-
-  margin-top: 2px;
-
   color: #75817c;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 7px;
   font-weight: 600;
 }
 
 .destination-card p {
-  margin: 4px 0 5px;
-
+  margin: 3px 0;
   color: #69756f;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 6.5px;
-  font-weight: 400;
-
-  line-height: 1.45;
-
   display: -webkit-box;
-
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
-
   overflow: hidden;
 }
 
 .destination-card button {
   padding: 0;
-
   border: 0;
-
   background: transparent;
-
   color: #aab4af;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 7px;
-  font-weight: 600;
-
   cursor: pointer;
-
   text-align: left;
-}
-
-.destination-card button span {
-  margin-left: 5px;
-
-  color: #00f0ff;
 }
 
 .destination-image {
   position: relative;
-
-  width: 95px;
-  height: 90px;
-
+  width: 90px;
+  height: 84px;
   overflow: hidden;
-
-  border-radius: 8px;
-
+  border-radius: 7px;
   background: #0b1518;
 }
 
 .destination-image img {
-  display: block;
-
   width: 100%;
   height: 100%;
-
   object-fit: cover;
-
   opacity: 0.65;
-
-  transition:
-    opacity 0.4s ease,
-    transform 0.5s ease;
 }
 
-.destination-card:hover
-.destination-image img {
-  transform: scale(1.04);
-}
-
-.destination-card.active
-.destination-image img {
-  opacity: 0.96;
+.destination-card.active .destination-image img {
+  opacity: 0.95;
 }
 
 .destination-image-overlay {
   position: absolute;
-
   inset: 0;
-
-  background:
-    linear-gradient(
-      180deg,
-      transparent 30%,
-      rgba(0, 0, 0, 0.45)
-    );
+  background: linear-gradient(180deg, transparent 30%, rgba(0, 0, 0, 0.45));
 }
 
 .destination-image-number {
   position: absolute;
-
   left: 5px;
   bottom: 5px;
-
+  width: 18px;
+  height: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 19px;
-  height: 19px;
-
   border-radius: 50%;
-
   background: #00f0ff;
-
   color: #021217;
-
-  font-family: "Manrope", sans-serif;
-
   font-size: 7px;
   font-weight: 700;
 }
 
-.destination-card.active
-.destination-image-number {
-  background: #ffffff;
-
-  box-shadow:
-    0 0 12px #00f0ff;
-}
-
 /* =========================================================
-   ANIMATIONS
+   PERFECT MOBILE & TABLET ALIGNMENT (FIXED PROPORTIONS)
 ========================================================= */
 
-@keyframes bulbBlueFlash {
-  0% {
-    filter:
-      drop-shadow(
-        0 0 5px #00f0ff
-      );
-  }
-
-  100% {
-    filter:
-      drop-shadow(
-        0 0 18px #00f0ff
-      );
-  }
-}
-
-/* =========================================================
-   TABLET
-========================================================= */
-
-@media (max-width: 1100px) and (min-width: 801px) {
-
-  .route-content {
-    left: 3%;
-    top: 12%;
-
-    width: 300px;
-  }
-
-  .route-content h2 {
-    font-size: 42px;
-  }
-
-  .route-lead {
-    font-size: 13px;
-  }
-
-  .world-map-image {
-    width: 78%;
-    height: 70%;
-  }
-
-  .route-svg {
-    width: 82%;
-    height: 75%;
-  }
-
-  .floating-location-card {
-    width: 135px;
-
-    min-height: 68px;
-
-    padding: 8px 10px;
-  }
-
-  .journey-navigation {
-    right: 2%;
-    width: 95px;
-  }
-
-  .destination-card {
-    flex-basis: 280px;
-    width: 280px;
-    min-width: 280px;
-    max-width: 280px;
-  }
-
-  .destination-image {
-    width: 82px;
-  }
-
-  .destination-card {
-    grid-template-columns:
-      minmax(0, 1fr)
-      82px;
-  }
-}
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 800px) {
-
+@media (max-width: 900px) {
   .route-scroll {
-    height: 250vh;
+    height: 300vh;
   }
 
   .route-sticky {
-    min-height: 100vh;
-
-    height: 100vh;
-
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100dvh;
+    padding: 12px 0 0;
+    box-sizing: border-box;
     overflow: hidden;
   }
 
-  /* =======================================================
-     MAP
-  ======================================================= */
-
-  .world-map-layer {
-    width: 100%;
-    height: 100%;
-
-    overflow: hidden;
-  }
-
-  .world-map-image {
-    width: 100%;
-    height: 65%;
-
-    right: 0;
-    top: 20%;
-
-    object-fit: cover;
-    object-position: center;
-  }
-
-  .map-vignette {
-    background:
-      linear-gradient(
-        180deg,
-        #02090d 0%,
-        rgba(2, 9, 13, 0.82) 18%,
-        rgba(2, 9, 13, 0.08) 42%,
-        rgba(2, 9, 13, 0.28) 68%,
-        rgba(2, 9, 13, 0.98) 84%,
-        #02090d 100%
-      );
-  }
-
-  .map-grid {
-    background-size: 45px 45px;
-    opacity: 0.035;
-  }
-
-  /* =======================================================
-     ROUTE SVG
-  ======================================================= */
-
-  .route-svg {
-    width: 100%;
-    height: 65%;
-
-    right: 0;
-    top: 5%;
-  }
-
-  .route-base,
-  .route-active {
-    display: none;
-  }
-
-  /* =======================================================
-     LEFT CONTENT
-  ======================================================= */
-
+  /* --- 1. TOP HEADER --- */
   .route-content {
-    left: 16px;
-    right: 16px;
-    top: 6%;
-
-    width: auto;
-    max-width: none;
-
-    z-index: 45;
+    position: relative;
+    top: 10%;
+    left: auto;
+    right: auto;
+    width: 100%;
+    padding: 0 16px;
+    box-sizing: border-box;
+    z-index: 30;
+    flex-shrink: 0;
   }
 
   .route-eyebrow {
-    gap: 9px;
-
-    margin-bottom: 12px;
-
-    font-size: 7px;
-
+    margin-bottom: 8px;
+    font-size: 8.5px;
     letter-spacing: 0.18em;
   }
 
   .route-eyebrow i {
-    width: 30px;
+    width: 24px;
   }
 
   .route-content h2 {
-    font-family: "Playfair Display", serif;
-
-    font-size: 34px;
-
-    line-height: 0.98;
-
-    letter-spacing: -0.03em;
-
-    max-width: 300px;
+    font-size: 36px;
+    line-height: 1.05;
   }
 
   .route-lead {
-    margin-top: 10px;
-
-    font-family: "Manrope", sans-serif;
-
-    font-size: 12px;
-
-    line-height: 1.45;
+    margin-top: 8px;
+    font-size: 11px;
+    line-height: 1.3;
   }
 
   .route-description {
     display: none;
   }
 
-  /* =======================================================
-     SELECTOR
-  ======================================================= */
-
   .route-selector {
-    margin-top: 11px;
-
-    padding: 2px;
-  }
-
-  .route-selector-item {
-    gap: 5px;
-
-    padding:
-      6px 9px;
-
-    font-size: 7px;
-  }
-
-  .selector-dot {
-    width: 5px;
-    height: 5px;
-  }
-
-  /* =======================================================
-     PROGRESS
-  ======================================================= */
-
-  .route-progress {
-    margin-top: 12px;
-
-    gap: 8px;
-  }
-
-  .route-play {
-    width: 27px;
-    height: 27px;
-
-    font-size: 9px;
-  }
-
-  .route-progress-track {
-    width: 65px;
-  }
-
-  .route-progress-label {
-    font-size: 5.5px;
-
-    letter-spacing: 0.12em;
-  }
-
-  /* =======================================================
-     JOURNEY NAV
-  ======================================================= */
-
-  .journey-navigation {
-    display: none;
-  }
-
-  /* =======================================================
-     MAP POINTS
-  ======================================================= */
-
-  .map-point {
-    width: 18px;
-    height: 18px;
-  }
-
-  .map-point-ring {
-    width: 8px;
-    height: 8px;
-  }
-
-  .map-point-ring span {
-    width: 3px;
-    height: 3px;
-  }
-
-  .map-point.active .map-point-ring {
-    width: 16px;
-    height: 16px;
-  }
-
-  .map-point.active .map-point-ring span {
-    width: 5px;
-    height: 5px;
-  }
-
-  /* =======================================================
-     FLOATING CARDS
-  ======================================================= */
-
-  .floating-location-card {
-    width: 112px;
-    min-height: 58px;
-
-    padding: 6px 8px;
-
-    border-radius: 8px;
-
-    transform:
-      translate(-50%, -50%)
-      scale(0.70);
-  }
-
-  .floating-location-card.active {
-    transform:
-      translate(-50%, -50%)
-      scale(0.80);
-  }
-
-  .floating-flag {
-    font-size: 10px;
-  }
-
-  .floating-card-header {
+    margin-top: 8px;
+    padding: 2px 4px;
     gap: 4px;
   }
 
-  .floating-card-header strong {
-    font-size: 6.5px;
-  }
-
-  .floating-country {
-    font-size: 5.5px;
-  }
-
-  .floating-services {
-    gap: 2px;
-
-    margin-top: 5px;
-  }
-
-  .floating-services span {
-    font-size: 5.5px;
-  }
-
-  .floating-arrow {
-    right: 5px;
-    bottom: 5px;
-
-    width: 15px;
-    height: 15px;
-
+  .route-selector-item {
+    padding: 3px 8px;
     font-size: 7px;
   }
 
-  /* =======================================================
-     SPECIFIC MOBILE CARD POSITIONS
-     Keeps cards away from header and bottom strip.
-  ======================================================= */
-
-  .floating-location-card[data-location="delhi"] {
-    top: 37% !important;
+  /* --- 2. MAP STAGE (Fixed Aspect Ratio - No Height Stretch) --- */
+  .map-stage {
+    position: relative;
+    top: auto;
+    left: auto;
+    right: auto;
+    width: 100%;
+    max-height: 45vh;
+    aspect-ratio: 16 / 10;
+    /* margin: auto 0;  */
+    flex-shrink: 0;
+    overflow: hidden;
   }
 
-  .floating-location-card[data-location="singapore"] {
-    top: 39% !important;
+  .world-map-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+    object-position: center;
   }
 
-  .floating-location-card[data-location="dubai"] {
-    top: 43% !important;
-    left: 72% !important;
-  }
-
-  .floating-location-card[data-location="new-york"] {
-    top: 55% !important;
-  }
-
-  .floating-location-card[data-location="calicut"] {
-    top: 62% !important;
-  }
-
-  .floating-location-card[data-location="kochi"] {
-    top: 56% !important;
-  }
-
-  .floating-location-card[data-location="mumbai"] {
-    top: 49% !important;
-  }
-
-  .floating-location-card[data-location="hyderabad"] {
-    top: 42% !important;
-  }
-
-  /* =======================================================
-     DESTINATION STRIP
-  ======================================================= */
-
-  .destination-strip {
-    z-index: 80;
-
-    padding:
-      8px 12px 7px;
-
+  .map-vignette {
     background:
-      linear-gradient(
-        180deg,
-        rgba(2, 10, 14, 0.88),
-        rgba(2, 10, 14, 0.99)
-      );
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+      radial-gradient(ellipse at center, transparent 40%, #02090d 95%),
+      linear-gradient(180deg, #02090d 0%, transparent 15%, transparent 85%, #02090d 100%);
   }
 
-  .destination-header {
-    align-items: center;
-
-    margin-bottom: 5px;
-
-    padding: 0;
+  /* Map Points & Pin Scale */
+  .map-point {
+    width: 12px;
+    height: 12px;
   }
 
-  .destination-eyebrow {
-    margin-bottom: 2px;
-
-    font-size: 5.5px;
-
-    letter-spacing: 0.17em;
+  .map-point-ring {
+    width: 5px;
+    height: 5px;
   }
 
-  .destination-header h3 {
-    font-family: "Playfair Display", serif;
-
-    font-size: 13px;
-
-    line-height: 1.05;
+  .map-point.active .map-point-ring {
+    width: 10px;
+    height: 10px;
   }
 
-  .destination-controls {
-    gap: 5px;
+  .floating-location-card {
+    width: auto;
+    min-width: 60px;
+    max-width: 82px;
+    min-height: auto;
+    padding: 2px 5px;
+    border-radius: 5px;
   }
 
-  .destination-counter {
-    margin-right: 2px;
+  .floating-location-card:not(.active) {
+    display: none; 
+  }
 
+  .floating-location-card.active {
+    opacity: 1;
+    z-index: 40;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+
+  .floating-flag {
+    font-size: 8.5px;
+  }
+
+  .floating-card-header strong {
     font-size: 6px;
   }
 
-  .destination-counter i {
-    margin: 0 3px;
+  .floating-country,
+  .floating-services,
+  .floating-arrow {
+    display: none;
+  }
+
+  /* --- 3. BOTTOM STRIP --- */
+  .destination-strip {
+    position: relative;
+    left: auto;
+    right: auto;
+    bottom: auto;
+    width: 100%;
+    padding: 8px 14px calc(8px + env(safe-area-inset-bottom, 0px));
+    box-sizing: border-box;
+    flex-shrink: 0;
+    z-index: 35;
+    background: linear-gradient(180deg, rgba(2, 10, 14, 0.95), #02090d);
+  }
+
+  .destination-header {
+    margin-bottom: 4px;
+  }
+
+  .destination-header h3 {
+    font-size: 13px;
+  }
+
+  .destination-eyebrow {
+    font-size: 6px;
   }
 
   .destination-arrow {
-    width: 23px;
-    height: 23px;
-
+    width: 22px;
+    height: 22px;
     font-size: 9px;
   }
 
-  /* =======================================================
-     DESTINATION CARDS
-  ======================================================= */
-
-  .destination-slider {
-    width: 100%;
-  }
-
   .destination-cards {
+    padding: 2px 0;
     gap: 8px;
-
-    padding:
-      3px 1px 4px;
-
-    scroll-snap-type: x proximity;
-  }
-
-  .destination-cards > div {
-    scroll-snap-align: center;
   }
 
   .destination-card {
-    flex: 0 0 220px;
-
-    width: 220px;
-    min-width: 220px;
-    max-width: 220px;
-
-    height: 82px;
-    min-height: 82px;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      70px;
-
-    gap: 7px;
-
-    padding: 6px;
-
-    border-radius: 8px;
-  }
-
-  .destination-number {
-    margin-bottom: 2px;
-
-    font-size: 5.5px;
+    flex: 0 0 210px;
+    width: 210px;
+    height: 70px;
+    grid-template-columns: minmax(0, 1fr) 62px;
+    gap: 6px;
+    padding: 5px;
   }
 
   .destination-card h3 {
-    font-family: "Playfair Display", serif;
-
-    font-size: 13px;
-
-    line-height: 1;
-
-    letter-spacing: -0.02em;
+    font-size: 11px;
   }
 
   .destination-subtitle {
-    margin-top: 2px;
-
-    font-size: 5.5px;
+    font-size: 6px;
   }
 
   .destination-card p,
@@ -1976,108 +811,13 @@
   }
 
   .destination-image {
-    width: 70px;
-    height: 68px;
-
-    border-radius: 6px;
+    width: 62px;
+    height: 58px;
   }
 
   .destination-image-number {
-    left: 4px;
-    bottom: 4px;
-
-    width: 16px;
-    height: 16px;
-
-    font-size: 5.5px;
-  }
-}
-
-/* =========================================================
-   VERY SMALL MOBILE
-========================================================= */
-
-@media (max-width: 420px) {
-
-  .route-content {
-    top: 5%;
-    left: 14px;
-    right: 14px;
-  }
-
-  .route-content h2 {
-    font-size: 30px;
-  }
-
-  .route-lead {
-    font-size: 11px;
-  }
-
-  .route-selector-item {
-    padding:
-      5px 8px;
-
-    font-size: 6.5px;
-  }
-
-  .route-progress {
-    margin-top: 10px;
-  }
-
-  .floating-location-card {
-    width: 105px;
-
-    transform:
-      translate(-50%, -50%)
-      scale(0.64);
-  }
-
-  .floating-location-card.active {
-    transform:
-      translate(-50%, -50%)
-      scale(0.73);
-  }
-
-  .destination-card {
-    flex-basis: 205px;
-
-    width: 205px;
-    min-width: 205px;
-    max-width: 205px;
-
-    grid-template-columns:
-      minmax(0, 1fr)
-      65px;
-  }
-
-  .destination-image {
-    width: 65px;
-    height: 68px;
-  }
-
-  .destination-header h3 {
-    font-size: 12px;
-  }
-}
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-
-  .destination-cards {
-    scroll-behavior: auto;
-  }
-
-  .floating-location-card,
-  .destination-card,
-  .destination-image img {
-    transition: none;
-  }
-
-  .map-point.active .map-point-pulse,
-  .map-point.active .map-point-ring {
-    animation: none;
+    width: 13px;
+    height: 13px;
+    font-size: 6px;
   }
 }
