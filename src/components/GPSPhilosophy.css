@@ -843,8 +843,8 @@
   }
 
   .gps-philosophy-content {
-    align-items: center;
-    text-align: center;
+    align-items: start;
+    text-align: left;
   }
 
   .gps-philosophy-desc {
@@ -891,12 +891,12 @@
   }
 
   .gps-philosophy-content {
-    align-items: center;
-    text-align: center;
+    align-items: start;
+    text-align: left;
   }
 
   .gps-philosophy-eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .gps-philosophy-title {

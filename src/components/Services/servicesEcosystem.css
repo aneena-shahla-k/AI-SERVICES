@@ -1,7 +1,7 @@
 /* =========================================================
    GOOGLE FONTS
 ========================================================= */
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap");
 
 /* =========================================================
    CONTAINER & LAYOUT (PREMIUM LIGHT THEME - CYAN/BLUE ACCENT)
@@ -11,18 +11,13 @@
   width: 100%;
   max-width: 100%;
   min-height: 100vh;
-  padding: 40px 4.2% 28px;
+  padding: 80px 4.2% 0; /* Matched top padding with GPS section */
 
   background:
     radial-gradient(
-      circle at 55% 42%,
-      rgba(0, 200, 255, 0.12),
-      transparent 35%
-    ),
-    radial-gradient(
-      circle at 80% 20%,
-      rgba(36, 140, 230, 0.14),
-      transparent 32%
+      circle at 80% 50%,
+      rgba(0, 200, 255, 0.13),
+      transparent 42%
     ),
     #f7f8fa;
 
@@ -34,6 +29,8 @@
 
   box-sizing: border-box;
   overflow-x: clip;
+  border-top: 1px solid #dce8ef;
+  border-bottom: 1px solid #dce8ef;
 }
 
 .eco-background-grid {
@@ -48,6 +45,7 @@
   background-size: 55px 55px;
 
   mask-image: radial-gradient(ellipse at center, black 0%, transparent 72%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 72%);
   z-index: 0;
 }
 
@@ -90,17 +88,22 @@
    LEFT INFO COLUMN
 ========================================================= */
 .eco-left-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   z-index: 3;
 }
 
 .eco-eyebrow {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 13px;
-  margin-bottom: 20px;
+  margin-bottom: 22px;
 
   font-family: "Manrope", sans-serif;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.22em;
   color: #69787a;
@@ -116,12 +119,13 @@
 .eco-headline {
   margin: 0;
   font-family: "Playfair Display", serif;
-  font-size: clamp(38px, 4.2vw, 56px);
-  line-height: 1.02;
+  font-size: clamp(44px, 4.4vw, 62px);
+  line-height: 1.04;
   letter-spacing: -0.03em;
   font-weight: 500;
   color: #101c1e;
   text-rendering: optimizeLegibility;
+  text-align: left;
 }
 
 .eco-headline em {
@@ -133,21 +137,25 @@
 }
 
 .eco-subtext {
-  max-width: 330px;
-  margin: 18px 0 24px;
+  max-width: 520px;
+  margin: 24px 0 0;
   font-family: "Manrope", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 500;
-  line-height: 1.55;
+  line-height: 1.65;
   letter-spacing: -0.015em;
   color: #5d6d70;
+  text-align: left;
 }
 
 .eco-stat-pills {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 14px;
+  margin-top: 24px;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .eco-pill-row {
@@ -190,6 +198,7 @@
 .eco-hint {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 10px;
   color: #7b8a8b;
 }
@@ -402,7 +411,7 @@
 }
 
 /* =========================================================
-   SERVICE NODES (BUTTONS) - FLY-OUT ON SCROLL
+   SERVICE NODES (BUTTONS)
 ========================================================= */
 .eco-node-wrap {
   position: absolute;
@@ -534,7 +543,7 @@
 }
 
 /* =========================================================
-   RIGHT PANEL - FIXED UNIFORM DIMENSIONS
+   RIGHT PANEL
 ========================================================= */
 .eco-right-panel {
   position: relative;
@@ -845,6 +854,7 @@
   align-items: center;
   justify-content: space-between;
   padding-top: 15px;
+  padding-bottom: 25px;
   border-top: 1px solid #dce8ef;
   color: #7b8a8b;
   font-family: "Manrope", sans-serif;
@@ -893,76 +903,134 @@
 }
 
 /* =========================================================
-   RESPONSIVE BREAKPOINTS
+   TABLET RESPONSIVE (MATCHED & LEFT-ALIGNED)
 ========================================================= */
-@media (max-width: 1200px) {
-  .eco-main-stage {
-    grid-template-columns: 240px minmax(400px, 1fr) 280px;
+@media (max-width: 1100px) {
+  .eco-system-container {
+    padding: 60px 4.2% 0;
   }
+
+  .eco-main-stage {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  /* Fully Left-Aligned matching GPS */
+  .eco-left-col {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 650px;
+    margin: 0;
+  }
+
+  .eco-eyebrow,
+  .eco-hint {
+    justify-content: flex-start;
+  }
+
+  .eco-subtext {
+    max-width: 650px;
+  }
+
+  .eco-stat-pills {
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
   .eco-center-wrapper {
-    transform: scale(0.85);
+    transform: scale(0.92);
+    margin: 0 auto;
+  }
+
+  .eco-right-panel {
+    max-width: 100%;
+    margin: 0;
+  }
+
+  .eco-panel-card {
+    height: auto;
+    gap: 16px;
+  }
+
+  .eco-features-box,
+  .eco-panel-title,
+  .eco-panel-desc {
+    height: auto;
+  }
+
+  .eco-bottom-section {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    text-align: left;
+  }
+
+  .eco-strip-grid {
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 18px;
   }
 }
 
-@media (max-width: 1024px) {
+/* =========================================================
+   MOBILE RESPONSIVE (MATCHED PERFECTLY TO GPS)
+========================================================= */
+@media (max-width: 700px) {
   .eco-system-container {
-    padding: 30px 20px;
+    padding: 50px 15px 0;
   }
 
   .eco-main-stage {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 30px;
+    align-items: flex-start;
+    gap: 20px;
   }
 
+  /* Left aligned headings and text */
   .eco-left-col {
-    text-align: center;
-    max-width: 500px;
-    margin: 0 auto;
-  }
-
-  .eco-eyebrow,
-  .eco-hint {
-    justify-content: center;
-  }
-
-  .eco-stat-pills {
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-
-  .eco-right-panel {
-    max-width: 450px;
     width: 100%;
-    margin: 0 auto;
+    align-items: flex-start;
+    text-align: left;
+    margin: 0;
   }
-}
 
-@media (max-width: 600px) {
-  .eco-system-container {
-    padding: 24px 12px;
+  .eco-eyebrow {
+    justify-content: flex-start;
+    margin-bottom: 16px;
   }
 
   .eco-headline {
-    font-size: 32px;
+    font-size: 36px;
+    line-height: 1.1;
+    text-align: left;
   }
 
   .eco-subtext {
-    font-size: 12px;
-    margin-bottom: 20px;
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 18px 0 0;
+    text-align: left;
   }
 
   .eco-stat-pills {
-    display: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .eco-hint {
+    justify-content: flex-start;
   }
 
   .eco-center-wrapper {
     width: 100%;
     height: 360px;
     overflow: hidden;
+    margin: 10px 0;
   }
 
   .eco-center-canvas {
@@ -972,32 +1040,63 @@
 
   .eco-right-panel {
     max-width: 100%;
-    padding: 0 4px;
+    padding: 0;
   }
 
   .eco-bottom-section {
     grid-template-columns: 1fr;
-    text-align: center;
+    text-align: left;
+    gap: 14px;
+    padding: 16px 0;
+  }
+
+  .eco-strip-header {
+    text-align: left;
   }
 
   .eco-strip-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 8px;
+    gap: 10px;
   }
 
   .eco-brand-line {
     flex-direction: column;
-    gap: 10px;
-    text-align: center;
+    align-items: flex-start;
+    gap: 12px;
+    text-align: left;
+    padding-bottom: 25px;
+  }
+
+  .eco-brand-right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
   }
 }
 
-@media (max-width: 420px) {
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+@media (max-width: 430px) {
+  .eco-headline {
+    font-size: 30px;
+  }
+
+  .eco-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+
   .eco-center-wrapper {
-    height: 320px;
+    height: 310px;
   }
 
   .eco-center-canvas {
-    transform: scale(0.60);
+    transform: scale(0.58);
+  }
+
+  .eco-strip-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
   }
 }

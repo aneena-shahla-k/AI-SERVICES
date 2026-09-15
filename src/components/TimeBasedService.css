@@ -1,4 +1,3 @@
-
 /* =========================================================
    TIME-BASED SERVICE SECTION (SCOPED WITH tm-tbs PREFIX)
 ========================================================= */
@@ -6,7 +5,7 @@
 .tm-tbs-section {
   position: relative;
   width: 100%;
-  padding: 80px 4.2% 90px;
+  padding: 80px 4.2% 0; /* GPS & Eco-system മാതൃകയിൽ ടോപ്പ് പാഡിംഗ് സിങ്ക് ചെയ്തു */
   background: 
     radial-gradient(circle at 80% 50%, rgba(0, 200, 255, 0.13), transparent 42%),
     #f7f8fa;
@@ -28,13 +27,21 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 50px;
+  margin-bottom: 45px;
   gap: 40px;
+}
+
+.tm-tbs-header-left {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .tm-tbs-sub-tag {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 13px;
   margin-bottom: 22px;
   font-size: 10px;
@@ -49,6 +56,7 @@
   width: 47px;
   height: 1.5px;
   background: #cbd3d1;
+  display: inline-block;
 }
 
 .tm-tbs-title {
@@ -59,9 +67,11 @@
   letter-spacing: -0.03em;
   font-weight: 500;
   color: #101c1e;
+  text-align: left;
 }
 
-.tm-tbs-title i {
+.tm-tbs-title i,
+.tm-tbs-title em {
   font-family: "Playfair Display", serif;
   font-style: italic;
   font-weight: 400;
@@ -77,12 +87,15 @@
   letter-spacing: -0.015em;
   color: #5d6d70;
   max-width: 520px;
+  text-align: left;
 }
 
 .tm-tbs-header-right {
   max-width: 420px;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
   gap: 20px;
 }
 
@@ -91,6 +104,7 @@
   font-size: 13.5px;
   line-height: 1.65;
   color: #5d6d70;
+  text-align: left;
 }
 
 .tm-tbs-badge-right {
@@ -104,6 +118,7 @@
   letter-spacing: 0.14em;
   color: #253438;
   line-height: 1.5;
+  text-align: left;
 }
 
 .tm-tbs-target-icon {
@@ -131,6 +146,7 @@
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 12px 35px rgba(26, 57, 64, 0.05);
+  text-align: left;
 }
 
 .tm-tbs-plan-card:hover {
@@ -224,6 +240,7 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 15px 40px rgba(16, 28, 30, 0.15);
+  text-align: left;
 }
 
 .tm-tbs-panel-tag {
@@ -355,6 +372,7 @@
   letter-spacing: 0.22em;
   color: #69787a;
   text-transform: uppercase;
+  text-align: left;
 }
 
 .tm-tbs-curved-route-container {
@@ -577,6 +595,7 @@
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
   box-shadow: 0 12px 35px rgba(26, 57, 64, 0.05);
+  text-align: left;
 }
 
 .tm-tbs-calc-header-tag {
@@ -685,6 +704,7 @@
   align-items: center;
   gap: 17px;
   padding-right: 20px;
+  text-align: left;
 }
 
 .tm-tbs-bm-icon {
@@ -720,6 +740,7 @@
   flex-direction: column;
   padding-left: 20px;
   border-left: 1px solid #d5e0e3;
+  text-align: left;
 }
 
 .tm-tbs-bm-stat strong {
@@ -738,59 +759,187 @@
   text-transform: uppercase;
 }
 
-/* RESPONSIVE */
+/* =========================================================
+   TABLET (MATCHED & LEFT-ALIGNED)
+========================================================= */
 @media (max-width: 1100px) {
+  .tm-tbs-section {
+    padding: 60px 4.2% 40px;
+  }
+
   .tm-tbs-top-header {
     flex-direction: column;
-    gap: 20px;
+    align-items: flex-start;
+    text-align: left;
+    gap: 25px;
+    margin-bottom: 35px;
   }
+
+  .tm-tbs-header-left {
+    align-items: flex-start;
+    text-align: left;
+    max-width: 650px;
+  }
+
+  .tm-tbs-sub-tag {
+    justify-content: flex-start;
+  }
+
+  .tm-tbs-subtitle {
+    max-width: 650px;
+  }
+
   .tm-tbs-cards-row {
     grid-template-columns: repeat(2, 1fr);
   }
+
   .tm-tbs-interactive-grid {
     grid-template-columns: 1fr;
+    gap: 20px;
   }
+
   .tm-tbs-bottom-metrics {
     grid-template-columns: 1fr 1fr;
     gap: 20px;
   }
+
   .tm-tbs-bm-stat {
     border-left: none;
     padding-left: 0;
   }
 }
 
+/* =========================================================
+   MOBILE (MATCHED PERFECTLY TO PREVIOUS SECTIONS)
+========================================================= */
 @media (max-width: 700px) {
+  .tm-tbs-section {
+    padding: 50px 15px 30px;
+  }
+
+  .tm-tbs-top-header {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+    gap: 20px;
+    margin-bottom: 25px;
+  }
+
+  .tm-tbs-header-left {
+    align-items: flex-start;
+    text-align: left;
+    width: 100%;
+  }
+
+  .tm-tbs-sub-tag {
+    justify-content: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .tm-tbs-title {
+    font-size: 36px;
+    line-height: 1.1;
+    text-align: left;
+  }
+
+  .tm-tbs-subtitle {
+    font-size: 14px;
+    line-height: 1.5;
+    max-width: 100%;
+    margin: 18px 0 0;
+    text-align: left;
+  }
+
+  .tm-tbs-header-right {
+    max-width: 100%;
+    align-items: flex-start;
+    text-align: left;
+    gap: 15px;
+  }
+
+  .tm-tbs-badge-right {
+    padding-left: 14px;
+    font-size: 9px;
+  }
+
   .tm-tbs-cards-row {
     display: flex;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     gap: 15px;
-    padding-bottom: 10px;
+    padding-bottom: 12px;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: none;
   }
+
   .tm-tbs-cards-row::-webkit-scrollbar {
     display: none;
   }
+
   .tm-tbs-plan-card {
     flex: 0 0 82%;
     scroll-snap-align: center;
+    padding: 20px;
   }
+
   .tm-tbs-interactive-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 18px;
+    margin-bottom: 25px;
   }
+
+  .tm-tbs-countdown-panel,
+  .tm-tbs-map-panel-clean,
+  .tm-tbs-calculator-panel {
+    padding: 20px;
+  }
+
   .tm-tbs-bottom-metrics {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
-    padding: 15px;
+    padding: 18px 16px;
   }
+
   .tm-tbs-bm-item {
     grid-column: span 2;
     padding-right: 0;
-    padding-bottom: 12px;
+    padding-bottom: 14px;
     border-bottom: 1px solid #d5e0e3;
+  }
+
+  .tm-tbs-bm-stat strong {
+    font-size: 18px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+@media (max-width: 430px) {
+  .tm-tbs-title {
+    font-size: 30px;
+  }
+
+  .tm-tbs-sub-tag {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .tm-tbs-timer-digits {
+    font-size: 30px;
+  }
+
+  .tm-tbs-bottom-metrics {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .tm-tbs-bm-stat strong {
+    font-size: 16px;
+  }
+
+  .tm-tbs-bm-stat span {
+    font-size: 6px;
   }
 }

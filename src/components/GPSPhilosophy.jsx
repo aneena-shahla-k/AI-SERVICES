@@ -223,9 +223,9 @@ export default function GPSPhilosophy() {
           </div>
 
           <h2 className="gps-philosophy-title">
-            We Sell the GPS.
+            We sell the GPS.
             <br />
-            <em>You Drive.</em>
+            <em>You drive.</em>
           </h2>
 
           <p className="gps-philosophy-desc">
