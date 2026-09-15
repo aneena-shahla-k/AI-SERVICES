@@ -1180,135 +1180,141 @@
    MOBILE
    ========================================================= */
 
+/* =========================================================
+   MOBILE & TABLET RESPONSIVE FIX
+   ========================================================= */
+
 @media (max-width: 899px) {
   .ai-section {
-    padding:
-      75px
-      20px;
+    padding: 60px 20px;
   }
 
   .ai-inner {
     grid-template-columns: 1fr;
-
-    gap: 45px;
+    gap: 40px;
   }
 
+  /* Heading & content side-ലേക്ക് (Left align) ആക്കാൻ */
   .copy-col {
-    text-align: center;
-
+    text-align: left;
     padding: 0;
   }
 
   .eyebrow {
-    justify-content: center;
+    justify-content: flex-start;
   }
 
   .ai-section h2 {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: clamp(32px, 7vw, 42px);
   }
 
   .lede {
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 15px;
+    margin-bottom: 24px;
   }
 
   .subblock {
-    margin-left: auto;
-    margin-right: auto;
-
+    margin-left: 0;
+    margin-right: 0;
     text-align: left;
+    margin-bottom: 28px;
   }
 
   .cta {
-    margin: 0 auto;
+    margin: 0;
   }
 
   .service-count {
-    justify-content: center;
+    justify-content: flex-start;
+    margin-top: 20px;
   }
 
+  /* Stage container adjustments */
   .stage {
-    width: 100%;
+    min-height: 480px;
+    aspect-ratio: auto;
+    overflow: hidden; /* ചിപ്പുകൾ സ്ക്രീനിന് പുറത്തേക്ക് പോയി horizontal scroll വരുന്നത് തടയാൻ */
+  }
 
-    min-height: 520px;
+  .robot-image {
+    width: 65%;
+    height: 75%;
+  }
 
-    max-width: 760px;
-
-    margin: 0 auto;
+  .stage-glow-one {
+    width: 320px;
+    height: 320px;
   }
 }
 
-
 /* =========================================================
-   SMALL MOBILE
+   SMALL MOBILE (Screen < 600px)
    ========================================================= */
 
 @media (max-width: 600px) {
   .ai-section {
-    padding:
-      60px
-      14px;
+    padding: 45px 16px;
   }
 
   .ai-section h2 {
-    font-size: 38px;
-  }
-
-  .lede {
-    font-size: 15px;
+    font-size: 32px;
+    line-height: 1.1;
   }
 
   .stage {
-    min-height: 450px;
+    min-height: 420px;
+    height: 440px;
   }
 
   .robot-image {
-    width: 82%;
-    height: 78%;
+    width: 70%;
+    height: 70%;
   }
 
-  .stage-glow-one {
-    width: 350px;
-    height: 350px;
-  }
-
+  /* Absolute chips clutter ഒഴിവാക്കാൻ മൊബൈലിൽ font & size compact ആക്കുന്നു */
   .chip {
-    max-width: 135px;
-
-    padding:
-      6px
-      8px
-      6px
-      6px;
-
-    font-size: 8.5px;
-
-    gap: 5px;
+    max-width: 125px;
+    padding: 5px 8px 5px 6px;
+    font-size: 8px;
+    gap: 4px;
+    box-shadow: 0 4px 12px rgba(20, 100, 145, 0.08);
   }
 
   .icon-dot {
-    width: 19px;
-    height: 19px;
+    width: 17px;
+    height: 17px;
   }
 
-  .chip-arrow {
-    display: none;
+  .icon-dot svg {
+    width: 10px;
+    height: 10px;
   }
 
+  .chip-label {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .chip-arrow,
   .hint {
     display: none;
   }
 
+  /* Active popup card mobile screen-ൽ ഒതുങ്ങി നിൽക്കാൻ */
   .detail {
-    width: 94%;
-
-    padding: 11px;
+    width: calc(100% - 24px);
+    bottom: 12px;
+    padding: 10px 12px;
+    border-radius: 14px;
   }
 
   .detail-icon {
-    width: 32px;
-    height: 32px;
+    width: 30px;
+    height: 30px;
   }
 
   .detail-body h4 {
@@ -1316,11 +1322,8 @@
   }
 
   .detail-body p {
-    font-size: 10.5px;
-  }
-
-  .detail-tag {
-    font-size: 7px;
+    font-size: 11px;
+    line-height: 1.4;
   }
 }
 

@@ -3,7 +3,7 @@ import "./GPSPhilosophy.css";
 
 // Change this only if your actual map filename is different
 import worldMap from "../assets/images/world-map.avif";
-import successionImage from "../assets/images/succession1.png"; // Replace with your actual succession asset path
+import successionImage from "../assets/images/succession1.png";
 
 const routeSteps = [
   {
@@ -60,14 +60,20 @@ export default function GPSPhilosophy() {
 
   /*
    * ---------------------------------------------------------
-   * SUBTLE WEB AUDIO API BEEP (FEATURE 4)
+   * SUBTLE WEB AUDIO API BEEP (MOBILE SAFE)
    * ---------------------------------------------------------
    */
   const playMilestoneSound = () => {
     try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      const ctx = new AudioContext();
+      const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContextClass) return;
+      const ctx = new AudioContextClass();
+
+      // Mobile Safari / Chrome audio unlock fallback
+      if (ctx.state === "suspended") {
+        ctx.resume().catch(() => {});
+      }
+
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
 
@@ -84,11 +90,10 @@ export default function GPSPhilosophy() {
       osc.start();
       osc.stop(ctx.currentTime + 0.15);
     } catch (e) {
-      // Audio context might be restricted before user interaction
+      // Audio autoplay policy might restrict sound before user interaction
     }
   };
 
-  // Track activeStep changes to trigger audio haptic beep
   const prevActiveStepRef = useRef(activeStep);
   useEffect(() => {
     if (activeStep > prevActiveStepRef.current && activeStep <= 6) {
@@ -99,10 +104,9 @@ export default function GPSPhilosophy() {
 
   /*
    * ---------------------------------------------------------
-   * START ANIMATION ONLY WHEN SECTION IS FULLY EXPOSED
+   * ANIMATION ENGINE WITH RESILIENT MOBILE INTERSECTION
    * ---------------------------------------------------------
    */
-
   useEffect(() => {
     const sectionNode = sectionRef.current;
     if (!sectionNode) return;
@@ -115,7 +119,7 @@ export default function GPSPhilosophy() {
         cancelAnimationFrame(animationRef.current);
       }
 
-      const duration = 12000; // 12 seconds per run
+      const duration = 12000; // 12 seconds
       let startTime = null;
 
       const stepAnimation = (timestamp) => {
@@ -151,16 +155,17 @@ export default function GPSPhilosophy() {
       animationRef.current = requestAnimationFrame(stepAnimation);
     };
 
+    // Mobile-friendly low threshold trigger
+    const observerThreshold = window.innerWidth <= 768 ? 0.15 : 0.45;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          // Triggers only when the section is substantially in view (60% exposed)
           if (entry.isIntersecting) {
             setProgress(0);
             setActiveStep(0);
             runAnimation();
           } else {
-            // Stop and reset when scrolled out of view
             if (animationRef.current) {
               cancelAnimationFrame(animationRef.current);
             }
@@ -169,7 +174,7 @@ export default function GPSPhilosophy() {
           }
         });
       },
-      { threshold: 0.6 }
+      { threshold: observerThreshold }
     );
 
     observer.observe(sectionNode);
@@ -184,21 +189,24 @@ export default function GPSPhilosophy() {
 
   /*
    * ---------------------------------------------------------
-   * GET EXACT LOCATION PIN POSITION FROM SVG PATH
+   * GET PIN POSITION FROM SVG PATH
    * ---------------------------------------------------------
    */
-
   let pinX = 80;
   let pinY = 445;
 
   if (routePathRef.current) {
-    const path = routePathRef.current;
-    const totalLength = path.getTotalLength();
-    const currentLength = totalLength * progress;
-    const currentPoint = path.getPointAtLength(currentLength);
+    try {
+      const path = routePathRef.current;
+      const totalLength = path.getTotalLength();
+      const currentLength = totalLength * progress;
+      const currentPoint = path.getPointAtLength(currentLength);
 
-    pinX = currentPoint.x;
-    pinY = currentPoint.y;
+      pinX = currentPoint.x;
+      pinY = currentPoint.y;
+    } catch (e) {
+      // SVG measurement fallback
+    }
   }
 
   const pinLeft = (pinX / 900) * 100;
@@ -206,19 +214,9 @@ export default function GPSPhilosophy() {
 
   return (
     <section className="gps-philosophy-section" ref={sectionRef}>
-
-      {/* =====================================================
-          MAIN
-      ====================================================== */}
-
       <div className="gps-philosophy-container">
-
-        {/* =================================================
-            LEFT CONTENT
-        ================================================== */}
-
+        {/* LEFT CONTENT */}
         <div className="gps-philosophy-content">
-
           <div className="gps-philosophy-eyebrow">
             <span className="gps-philosophy-dash"></span>
             GPS Philosophy
@@ -231,131 +229,75 @@ export default function GPSPhilosophy() {
           </h2>
 
           <p className="gps-philosophy-desc">
-            We don't drive your business for you. We build the
-            route. We identify the opportunity, design the
-            strategy, build the technology, organize the systems,
-            and provide the marketing and growth roadmap.
-            Then you take the wheel.
+            We don't drive your business for you. We build the route. We identify
+            the opportunity, design the strategy, build the technology, organize
+            the systems, and provide the marketing and growth roadmap. Then you
+            take the wheel.
           </p>
 
           <div className="gps-philosophy-info">
-
             <div className="gps-info-item">
-
-              <span className="gps-info-number">
-                01
-              </span>
-
+              <span className="gps-info-number">01</span>
               <div>
-                <h3>
-                  FIND THE OPPORTUNITY
-                </h3>
-
+                <h3>FIND THE OPPORTUNITY</h3>
                 <p>
-                  We understand where you are
-                  and identify where your business
-                  can go next.
+                  We understand where you are and identify where your business can
+                  go next.
                 </p>
               </div>
-
             </div>
 
             <div className="gps-info-item">
-
-              <span className="gps-info-number">
-                02
-              </span>
-
+              <span className="gps-info-number">02</span>
               <div>
-                <h3>
-                  BUILD THE ROUTE
-                </h3>
-
+                <h3>BUILD THE ROUTE</h3>
                 <p>
-                  Strategy, technology and systems
-                  become one connected path toward
-                  growth.
+                  Strategy, technology and systems become one connected path
+                  toward growth.
                 </p>
               </div>
-
             </div>
 
             <div className="gps-info-item">
-
-              <span className="gps-info-number">
-                03
-              </span>
-
+              <span className="gps-info-number">03</span>
               <div>
-                <h3>
-                  YOU TAKE THE WHEEL
-                </h3>
-
+                <h3>YOU TAKE THE WHEEL</h3>
                 <p>
-                  We give you the direction and
-                  infrastructure. You remain in
+                  We give you the direction and infrastructure. You remain in
                   control of the journey.
                 </p>
               </div>
-
             </div>
-
           </div>
-
         </div>
 
-
-        {/* =================================================
-            RIGHT MAP
-        ================================================== */}
-
+        {/* RIGHT MAP */}
         <div className="gps-philosophy-visual">
-
           <div className="gps-map-wrapper">
-
             {/* WORLD MAP */}
-
             <div className="gps-world-map">
-
               <img
                 src={worldMap}
                 alt="World map"
                 className="gps-world-map-image"
               />
-
               <div className="gps-map-overlay"></div>
-
               <div className="gps-map-glow"></div>
-
               <div className="gps-map-grid"></div>
-
             </div>
 
-
             {/* MAP LABELS */}
+            <span className="gps-map-label gps-label-india">INDIA</span>
+            <span className="gps-map-label gps-label-global">GLOBAL</span>
 
-            <span className="gps-map-label gps-label-india">
-              INDIA
-            </span>
-
-            <span className="gps-map-label gps-label-global">
-              GLOBAL
-            </span>
-
-
-            {/* =================================================
-                ROUTE SVG
-            ================================================== */}
-
+            {/* ROUTE SVG */}
             <svg
               className="gps-route-svg"
               viewBox="0 0 900 550"
               preserveAspectRatio="none"
               aria-hidden="true"
             >
-
               <defs>
-
                 <linearGradient
                   id="gpsRouteGradient"
                   x1="0%"
@@ -363,27 +305,10 @@ export default function GPSPhilosophy() {
                   x2="100%"
                   y2="0%"
                 >
-
-                  <stop
-                    offset="0%"
-                    stopColor="#7dd3fc"
-                  />
-
-                  <stop
-                    offset="40%"
-                    stopColor="#38bdf8"
-                  />
-
-                  <stop
-                    offset="75%"
-                    stopColor="#0284c7"
-                  />
-
-                  <stop
-                    offset="100%"
-                    stopColor="#7dd3fc"
-                  />
-
+                  <stop offset="0%" stopColor="#7dd3fc" />
+                  <stop offset="40%" stopColor="#38bdf8" />
+                  <stop offset="75%" stopColor="#0284c7" />
+                  <stop offset="100%" stopColor="#7dd3fc" />
                 </linearGradient>
 
                 <filter
@@ -393,18 +318,11 @@ export default function GPSPhilosophy() {
                   width="200%"
                   height="200%"
                 >
-
-                  <feGaussianBlur
-                    stdDeviation="7"
-                  />
-
+                  <feGaussianBlur stdDeviation="7" />
                 </filter>
-
               </defs>
 
-
               {/* ROUTE GLOW */}
-
               <path
                 className="gps-route-glow"
                 d="
@@ -423,9 +341,7 @@ export default function GPSPhilosophy() {
                 "
               />
 
-
               {/* MAIN ROUTE */}
-
               <path
                 ref={routePathRef}
                 className="gps-route-path"
@@ -444,90 +360,58 @@ export default function GPSPhilosophy() {
                   C 773 132 790 108 850 88
                 "
               />
-
             </svg>
 
-
-            {/* =================================================
-                STATIC ROUTE POINTS
-            ================================================== */}
-
+            {/* STATIC ROUTE POINTS */}
             <div
-              className={`
-                gps-route-point
-                gps-point-idea
-                ${activeStep >= 1 ? "active" : ""}
-                ${activeStep > 1 ? "completed" : ""}
-              `}
+              className={`gps-route-point gps-point-idea ${
+                activeStep >= 1 ? "active" : ""
+              } ${activeStep > 1 ? "completed" : ""}`}
             >
               <span></span>
             </div>
 
-
             <div
-              className={`
-                gps-route-point
-                gps-point-strategy
-                ${activeStep >= 2 ? "active" : ""}
-                ${activeStep > 2 ? "completed" : ""}
-              `}
+              className={`gps-route-point gps-point-strategy ${
+                activeStep >= 2 ? "active" : ""
+              } ${activeStep > 2 ? "completed" : ""}`}
             >
               <span></span>
             </div>
 
-
             <div
-              className={`
-                gps-route-point
-                gps-point-technology
-                ${activeStep >= 3 ? "active" : ""}
-                ${activeStep > 3 ? "completed" : ""}
-              `}
+              className={`gps-route-point gps-point-technology ${
+                activeStep >= 3 ? "active" : ""
+              } ${activeStep > 3 ? "completed" : ""}`}
             >
               <span></span>
             </div>
 
-
             <div
-              className={`
-                gps-route-point
-                gps-point-marketing
-                ${activeStep >= 4 ? "active" : ""}
-                ${activeStep > 4 ? "completed" : ""}
-              `}
+              className={`gps-route-point gps-point-marketing ${
+                activeStep >= 4 ? "active" : ""
+              } ${activeStep > 4 ? "completed" : ""}`}
             >
               <span></span>
             </div>
 
-
             <div
-              className={`
-                gps-route-point
-                gps-point-growth
-                ${activeStep >= 5 ? "active" : ""}
-                ${activeStep > 5 ? "completed" : ""}
-              `}
+              className={`gps-route-point gps-point-growth ${
+                activeStep >= 5 ? "active" : ""
+              } ${activeStep > 5 ? "completed" : ""}`}
             >
               <span></span>
             </div>
 
-
             <div
-              className={`
-                gps-route-point
-                gps-point-succession
-                ${activeStep >= 6 ? "active" : ""}
-                ${activeStep > 6 ? "completed" : ""}
-              `}
+              className={`gps-route-point gps-point-succession ${
+                activeStep >= 6 ? "active" : ""
+              } ${activeStep > 6 ? "completed" : ""}`}
             >
               <span></span>
             </div>
 
-
-            {/* =================================================
-                MOVING LOCATION PIN
-            ================================================== */}
-
+            {/* MOVING LOCATION PIN */}
             <div
               className="gps-moving-pin"
               style={{
@@ -540,47 +424,23 @@ export default function GPSPhilosophy() {
               <div className="gps-pin-core"></div>
             </div>
 
-
-            {/* =================================================
-                KERALA ORIGIN
-            ================================================== */}
-
+            {/* KERALA ORIGIN */}
             <div className="gps-origin">
-
               <div className="gps-origin-pulse"></div>
-
               <div className="gps-origin-pin">
                 <span></span>
               </div>
-
             </div>
-
 
             <div className="gps-origin-card">
-
-              <span className="gps-card-icon">
-                ⌖
-              </span>
-
+              <span className="gps-card-icon">⌖</span>
               <div>
-
-                <strong>
-                  KERALA
-                </strong>
-
-                <small>
-                  OUR ORIGIN
-                </small>
-
+                <strong>KERALA</strong>
+                <small>OUR ORIGIN</small>
               </div>
-
             </div>
 
-
-            {/* =================================================
-                STEP CARDS
-            ================================================== */}
-
+            {/* STEP CARDS */}
             {routeSteps.map((step, index) => {
               const stepIndex = index + 1;
               const isActive = activeStep === stepIndex;
@@ -589,45 +449,25 @@ export default function GPSPhilosophy() {
               return (
                 <div
                   key={step.number}
-                  className={`
-                    gps-route-step
-                    ${step.className}
-                    ${isActive ? "is-active" : ""}
-                    ${isComplete ? "is-complete" : ""}
-                  `}
+                  className={`gps-route-step ${step.className} ${
+                    isActive ? "is-active" : ""
+                  } ${isComplete ? "is-complete" : ""}`}
                 >
-
                   <div className="gps-step-dot">
                     <span></span>
                   </div>
-
                   <div className="gps-step-content">
-                    <span className="gps-step-number">
-                      {step.number}
-                    </span>
-
-                    <strong>
-                      {step.title}
-                    </strong>
-
-                    <small>
-                      {step.description}
-                    </small>
+                    <span className="gps-step-number">{step.number}</span>
+                    <strong>{step.title}</strong>
+                    <small>{step.description}</small>
                   </div>
-
                 </div>
               );
             })}
 
-
-            {/* =================================================
-                GLOBAL DESTINATION (SUCCESSION IMAGE REPLACES GRAPHIC)
-            ================================================== */}
-
+            {/* GLOBAL DESTINATION */}
             <div className="gps-destination">
-
               <div className="gps-destination-glow"></div>
-
               <div className="gps-city">
                 <img
                   src={successionImage}
@@ -635,207 +475,104 @@ export default function GPSPhilosophy() {
                   className="gps-succession-img"
                 />
               </div>
-
               <div className="gps-destination-ring"></div>
-
             </div>
-
 
             <div className="gps-global-card">
-
-              <span className="gps-card-icon">
-                ◎
-              </span>
-
+              <span className="gps-card-icon">◎</span>
               <div>
-
-                <strong>
-                  GLOBAL
-                </strong>
-
-                <small>
-                  YOUR NEXT DESTINATION
-                </small>
-
+                <strong>GLOBAL</strong>
+                <small>YOUR NEXT DESTINATION</small>
               </div>
-
             </div>
 
-
-            {/* =================================================
-                STATS (INCLUDING LIVE PROGRESS %)
-            ================================================== */}
-
+            {/* STATS */}
             <div className="gps-route-stats">
-
               <div className="gps-route-stat">
-
-                <strong>
-                  {Math.round(progress * 100)}%
-                </strong>
-
-                <span>
-                  LIVE PROGRESS
-                </span>
-
+                <strong>{Math.round(progress * 100)}%</strong>
+                <span>LIVE PROGRESS</span>
               </div>
 
               <div className="gps-route-stat">
-
-                <strong>
-                  01
-                </strong>
-
-                <span>
-                  CONNECTED ECOSYSTEM
-                </span>
-
+                <strong>01</strong>
+                <span>CONNECTED ECOSYSTEM</span>
               </div>
 
               <div className="gps-route-stat">
-
-                <strong>
-                  ∞
-                </strong>
-
-                <span>
-                  POSSIBILITIES
-                </span>
-
+                <strong>∞</strong>
+                <span>POSSIBILITIES</span>
               </div>
 
               <div className="gps-route-stat-route">
-
-                <span>
-                  FROM KERALA
-                </span>
-
-                <span>
-                  TO THE WORLD
-                </span>
-
+                <span>FROM KERALA</span>
+                <span>TO THE WORLD</span>
               </div>
-
             </div>
-
           </div>
-
         </div>
-
       </div>
 
-
-      {/* =====================================================
-          BUSINESS ECOSYSTEM
-      ====================================================== */}
-
+      {/* BUSINESS ECOSYSTEM */}
       <div className="gps-ecosystem">
-
         <div className="gps-ecosystem-title">
-
-          <span>
-            OUR BUSINESS ECOSYSTEM
-          </span>
-
-          <i>
-            →
-          </i>
-
+          <span>OUR BUSINESS ECOSYSTEM</span>
+          <i>→</i>
         </div>
 
-
         <div className="gps-ecosystem-item">
-
-          <span className="ecosystem-icon">
-            ▣
-          </span>
-
+          <span className="ecosystem-icon">▣</span>
           <span>
             Websites &amp;
             <br />
             Digital Platforms
           </span>
-
         </div>
 
-
         <div className="gps-ecosystem-item">
-
-          <span className="ecosystem-icon">
-            □
-          </span>
-
+          <span className="ecosystem-icon">□</span>
           <span>
             E-Commerce
             <br />
             Systems
           </span>
-
         </div>
 
-
         <div className="gps-ecosystem-item">
-
-          <span className="ecosystem-icon">
-            ▯
-          </span>
-
+          <span className="ecosystem-icon">▯</span>
           <span>
             Mobile App
             <br />
             Development
           </span>
-
         </div>
 
-
         <div className="gps-ecosystem-item">
-
-          <span className="ecosystem-icon">
-            ▣
-          </span>
-
+          <span className="ecosystem-icon">▣</span>
           <span>
             Booking &amp;
             <br />
             Reservations
           </span>
-
         </div>
 
-
         <div className="gps-ecosystem-item">
-
-          <span className="ecosystem-icon">
-            ⊞
-          </span>
-
+          <span className="ecosystem-icon">⊞</span>
           <span>
             ERP &amp; Business
             <br />
             Core
           </span>
-
         </div>
 
-
         <div className="gps-ecosystem-item">
-
-          <span className="ecosystem-icon">
-            ⚙
-          </span>
-
+          <span className="ecosystem-icon">⚙</span>
           <span>
             AI Solutions &amp;
             <br />
             Automation
           </span>
-
         </div>
-
       </div>
-
     </section>
   );
 }
-

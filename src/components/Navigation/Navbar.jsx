@@ -168,11 +168,11 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
           {/* Page 4: Project Details & Contact */}
           <button
             type="button"
-            className={`ac-nav__link-btn ${currentPage === "details" ? "active-link" : ""}`}
+            className={`ac-nav__link-btn ${currentPage === "contact" ? "active-link" : ""}`}
             onMouseEnter={handleItemHover}
-            onClick={() => handleItemSelect("details")}
+            onClick={() => handleItemSelect("contact")}
           >
-            Contact & Details
+            Contact
           </button>
         </nav>
 
@@ -209,6 +209,13 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
             >
               <span>Home</span>
             </button>
+            <button
+              type="button"
+              className={`ac-mobile-link ${currentPage === "about" ? "active" : ""}`}
+              onClick={() => handleItemSelect("about")}
+            >
+              <span>About</span>
+            </button>
 
             {/* Mobile Solutions Accordion */}
             <div className="ac-mobile-accordion">
@@ -242,20 +249,14 @@ export default function Navbar({ onOpenProject, onNavigate, currentPage = "home"
               )}
             </div>
 
-            <button
-              type="button"
-              className={`ac-mobile-link ${currentPage === "growth-plans" ? "active" : ""}`}
-              onClick={() => handleItemSelect("growth-plans")}
-            >
-              <span>Growth Plans</span>
-            </button>
+            
 
             <button
               type="button"
-              className={`ac-mobile-link ${currentPage === "details" ? "active" : ""}`}
-              onClick={() => handleItemSelect("details")}
+              className={`ac-mobile-link ${currentPage === "contact" ? "active" : ""}`}
+              onClick={() => handleItemSelect("contact")}
             >
-              <span>Contact & Details</span>
+              <span>Contact</span>
             </button>
           </div>
 
