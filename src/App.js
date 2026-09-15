@@ -12,8 +12,8 @@ import Navbar from "./components/Navigation/Navbar";
 import Footer from "./components/Footer";
 
 import Home from "./pages/Home";
-import Solutions from "./pages/Solutions";
-import ProjectDetail from "./pages/ProjectDetail";
+// import Solutions from "./pages/Solutions";
+// import ProjectDetail from "./pages/ProjectDetail";
 import About from "./pages/About";
 
 // =====================================================
@@ -24,7 +24,7 @@ function AppContent() {
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [selectedSlug, setSelectedSlug] = useState(null);
+  // const [selectedSlug, setSelectedSlug] = useState(null);
   const [projectOpen, setProjectOpen] = useState(false);
 
   // =====================================================
@@ -42,17 +42,17 @@ function AppContent() {
       return "about";
     }
 
-    if (path.startsWith("/solutions")) {
-      return "solutions";
-    }
+    // if (path.startsWith("/solutions")) {
+    //   return "solutions";
+    // }
 
     if (path.startsWith("/contact")) {
       return "contact";
     }
 
-    if (path.startsWith("/project")) {
-      return "details";
-    }
+    // if (path.startsWith("/project")) {
+    //   return "details";
+    // }
 
     return "";
   };
@@ -64,7 +64,7 @@ function AppContent() {
   // =====================================================
 
   const handleNavigate = (page, slug = null) => {
-    setSelectedSlug(slug);
+    // setSelectedSlug(slug);
 
     switch (page) {
       case "home":
@@ -160,7 +160,7 @@ function AppContent() {
 
 
           {/* SOLUTIONS */}
-
+{/* 
           <Route
             path="/solutions"
             element={
@@ -169,12 +169,12 @@ function AppContent() {
                 slug={selectedSlug}
               />
             }
-          />
+          /> */}
 
 
           {/* SOLUTION DETAIL */}
 
-          <Route
+          {/* <Route
             path="/solutions/:slug"
             element={
               <Solutions
@@ -182,26 +182,26 @@ function AppContent() {
                 slug={selectedSlug}
               />
             }
-          />
+          /> */}
 
 
           {/* CONTACT */}
 
           {/* Replace ProjectDetail with Contact when
               you have a separate Contact page */}
-
+{/* 
           <Route
             path="/contact"
             element={<ProjectDetail />}
-          />
+          /> */}
 
 
           {/* PROJECT */}
 
-          <Route
+          {/* <Route
             path="/project"
             element={<ProjectDetail />}
-          />
+          /> */}
 
         </Routes>
 
@@ -241,7 +241,7 @@ function AppContent() {
               ×
             </button>
 
-            <ProjectDetail />
+            {/* <ProjectDetail /> */}
 
           </div>
         </div>

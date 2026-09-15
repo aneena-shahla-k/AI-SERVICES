@@ -5,7 +5,7 @@ import CaseStudies from '../components/About1/CaseStudies'
 import Industries from '../components/About1/Industries'
 import AboutUs from '../components/About1/AboutUs'
 
-export default function About() {1
+export default function About() {
   return (
     <div>
         <HowWeWork/>
