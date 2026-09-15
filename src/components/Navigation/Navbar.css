@@ -86,6 +86,7 @@
   font-weight: 600;
   padding: 8px 14px;
   border-radius: 999px;
+  text-decoration: none;
   cursor: pointer;
   transition: color 0.2s ease;
   display: inline-flex;
@@ -97,7 +98,7 @@
 }
 
 .ac-nav__link-btn.active-link {
-  color: #2563eb;
+  color: #0284c7;
   font-weight: 700;
 }
 

@@ -1280,3 +1280,23 @@
   }
 
 }
+.fn-footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  text-decoration: none;
+  color: inherit;
+  transition:
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.fn-footer-link:hover {
+  color: #0284c7;
+  transform: translateX(3px);
+}
+
+.fn-footer-link.active {
+  color: #0284c7;
+}
