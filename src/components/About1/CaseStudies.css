@@ -1,0 +1,959 @@
+/* =========================================================
+   CASE STUDIES
+   MATCHED TO GPS PHILOSOPHY THEME
+========================================================= */
+
+.case-studies {
+  position: relative;
+  width: 100%;
+  padding: 80px 4.2% 0; /* GPS standards അനുസരിച്ച് സിങ്ക് ചെയ്തു */
+  background:
+    radial-gradient(
+      circle at 80% 50%,
+      rgba(0, 200, 255, 0.13),
+      transparent 42%
+    ),
+    #f7f8fa;
+  color: #152226;
+  font-family: "Manrope", sans-serif;
+  box-sizing: border-box;
+  overflow: hidden;
+  border-top: 1px solid #dce8ef;
+  border-bottom: 1px solid #dce8ef;
+  isolation: isolate;
+}
+
+.case-studies *,
+.case-studies *::before,
+.case-studies *::after {
+  box-sizing: border-box;
+}
+
+/* =========================================================
+   AMBIENT BACKGROUND
+========================================================= */
+
+.case-studies::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  right: -180px;
+  top: 25%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(14, 165, 233, 0.15),
+    transparent 70%
+  );
+  filter: blur(70px);
+  pointer-events: none;
+  z-index: -2;
+}
+
+.case-studies::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -3;
+  background-image:
+    linear-gradient(
+      rgba(35, 86, 103, 0.035) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(35, 86, 103, 0.035) 1px,
+      transparent 1px
+    );
+  background-size: 60px 60px;
+  mask-image:
+    radial-gradient(
+      circle at center,
+      black,
+      transparent 75%
+    );
+  -webkit-mask-image:
+    radial-gradient(
+      circle at center,
+      black,
+      transparent 75%
+    );
+}
+
+/* =========================================================
+   HEADER
+========================================================= */
+
+.case-studies__header {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-studies__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  color: #69787a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.case-studies__eyebrow > span:first-child {
+  color: #69787a;
+}
+
+.case-studies__line {
+  width: 47px;
+  height: 1.5px;
+  background: #cbd3d1;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.case-studies__count {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: #7c8c90;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+}
+
+.case-studies__count strong {
+  color: #0284c7;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+}
+
+.case-studies__count i {
+  margin: 0 4px;
+  color: #b4c1c4;
+  font-style: normal;
+}
+
+/* =========================================================
+   HEADING
+========================================================= */
+
+.case-studies__heading {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 40px;
+  text-align: left;
+}
+
+.case-studies__heading > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.case-studies__heading > div > span {
+  display: block;
+  margin-bottom: 18px;
+  color: #69787a;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.case-studies__heading h2 {
+  margin: 0;
+  color: #101c1e;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(44px, 4.4vw, 62px);
+  line-height: 1.04;
+  letter-spacing: -0.03em;
+  font-weight: 500;
+  text-align: left;
+}
+
+.case-studies__heading h2 em,
+.case-studies__heading h2 i {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-weight: 400;
+  color: #0284c7;
+  text-shadow:
+    0 0 20px
+    rgba(2, 132, 199, 0.25);
+}
+
+.case-studies__heading > p {
+  max-width: 420px;
+  margin: 0 0 5px;
+  color: #5d6d70;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  letter-spacing: -0.015em;
+  text-align: left;
+}
+
+/* =========================================================
+   FILM ROLL
+========================================================= */
+
+.case-studies__film {
+  position: relative;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.42);
+  border-top: 1px solid #d5e0e3;
+  border-bottom: 1px solid #d5e0e3;
+  box-shadow: 0 12px 35px rgba(26, 57, 64, 0.05);
+}
+
+/* =========================================================
+   SPROCKETS
+========================================================= */
+
+.case-studies__sprockets {
+  width: 100%;
+  height: 13px;
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 0 12px;
+  overflow: hidden;
+  background: rgba(232, 239, 241, 0.72);
+  border-bottom: 1px solid #dce5e8;
+}
+
+.case-studies__sprockets:last-child {
+  border-top: 1px solid #dce5e8;
+  border-bottom: 0;
+}
+
+.case-studies__sprockets span {
+  flex: 0 0 20px;
+  height: 5px;
+  border-radius: 2px;
+  background: #cbd7da;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* =========================================================
+   FILM WINDOW & TRACK
+========================================================= */
+
+.case-studies__film-window {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  scrollbar-width: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  overscroll-behavior-x: none;
+  -webkit-overflow-scrolling: auto;
+}
+
+.case-studies__film-window::-webkit-scrollbar {
+  display: none;
+}
+
+.case-studies__film-window.is-dragging {
+  cursor: grabbing;
+}
+
+.case-studies__film-track {
+  width: fit-content;
+  min-width: unset !important; 
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  padding: 18px 22px;
+}
+
+/* =========================================================
+   PROJECT FRAME
+========================================================= */
+
+.case-studies__film-item {
+  position: relative;
+  flex: 0 0 clamp(270px, 27vw, 365px);
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid rgba(166, 197, 205, 0.75);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #152226;
+  box-shadow: 0 12px 35px rgba(26, 57, 64, 0.06);
+  cursor: pointer;
+  transform: scale(0.95);
+  transition:
+    transform 0.45s ease,
+    border-color 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.case-studies__film-item:hover {
+  transform: scale(0.975);
+  border-color: #0284c7;
+}
+
+.case-studies__film-item.active {
+  transform: scale(1);
+  border-color: #0284c7;
+  box-shadow:
+    0 18px 42px rgba(2, 132, 199, 0.15),
+    0 0 0 1px rgba(2, 132, 199, 0.35);
+}
+
+/* =========================================================
+   FRAME HEADER
+========================================================= */
+
+.case-studies__frame-header {
+  height: 30px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #d8e2e5;
+  color: #7c8c90;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.case-studies__film-item.active .case-studies__frame-header {
+  color: #0284c7;
+}
+
+/* =========================================================
+   FRAME IMAGE
+========================================================= */
+
+.case-studies__frame-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.5 / 1;
+  overflow: hidden;
+  background: #e8eff1;
+}
+
+.case-studies__frame-image img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  pointer-events: none;
+  filter: saturate(0.78);
+  transform: scale(1.01);
+  transition:
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    filter 0.6s ease;
+}
+
+.case-studies__film-item:hover .case-studies__frame-image img,
+.case-studies__film-item.active .case-studies__frame-image img {
+  transform: scale(1.05);
+  filter: saturate(0.98);
+}
+
+/* =========================================================
+   IMAGE OVERLAY
+========================================================= */
+
+.case-studies__image-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0.04),
+      transparent 45%,
+      rgba(20, 42, 48, 0.38)
+    );
+  pointer-events: none;
+}
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+.case-studies__category {
+  position: absolute;
+  left: 14px;
+  top: 14px;
+  padding: 6px 9px;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+}
+
+/* =========================================================
+   PROJECT NAME
+========================================================= */
+
+.case-studies__project-name {
+  position: absolute;
+  left: 15px;
+  bottom: 15px;
+  color: white;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(25px, 2.5vw, 34px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* =========================================================
+   ACTIVE DOT
+========================================================= */
+
+.case-studies__active-dot {
+  position: absolute;
+  right: 15px;
+  bottom: 16px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: white;
+  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.14);
+}
+
+/* =========================================================
+   FRAME FOOTER
+========================================================= */
+
+.case-studies__frame-footer {
+  height: 40px;
+  display: grid;
+  grid-template-columns: 26px 1fr 18px;
+  align-items: center;
+  gap: 8px;
+  padding: 0 12px;
+  background: rgba(255, 255, 255, 0.86);
+  text-align: left;
+}
+
+.case-studies__frame-footer span {
+  color: #0284c7;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.case-studies__frame-footer strong {
+  color: #263438;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.case-studies__frame-footer svg {
+  color: #7e8e92;
+  transition:
+    color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.case-studies__film-item:hover .case-studies__frame-footer svg,
+.case-studies__film-item.active .case-studies__frame-footer svg {
+  color: #0284c7;
+  transform: translate(2px, -2px);
+}
+
+/* =========================================================
+   CONTROLS
+========================================================= */
+
+.case-studies__controls {
+  width: 100%;
+  max-width: 1320px;
+  margin: 16px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-studies__scroll-hint {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #7c8c90;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.case-studies__scroll-hint span {
+  width: 35px;
+  height: 1px;
+  background: #cbd3d1;
+}
+
+.case-studies__scroll-hint p {
+  margin: 0;
+}
+
+.case-studies__buttons {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.case-studies__buttons button {
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #d5e0e3;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
+  color: #45636c;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease,
+    opacity 0.2s ease;
+}
+
+.case-studies__buttons button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  color: #0284c7;
+  border-color: rgba(2, 132, 199, 0.4);
+  background: white;
+}
+
+.case-studies__buttons button:disabled,
+.case-studies__buttons button.disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* =========================================================
+   PROJECT DETAILS
+========================================================= */
+
+.case-studies__details {
+  width: 100%;
+  max-width: 1320px;
+  margin: 45px auto 0;
+  padding-top: 22px;
+  padding-bottom: 30px;
+  border-top: 1px solid #d8e2e5;
+  text-align: left;
+}
+
+.case-studies__details-content {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr 1fr auto;
+  align-items: end;
+  gap: 35px;
+}
+
+/* =========================================================
+   DETAILS TITLE
+========================================================= */
+
+.case-studies__details-label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  margin-bottom: 12px;
+  color: #69787a;
+  font-size: 7px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.case-studies__details-label span:first-child {
+  color: #0284c7;
+}
+
+.case-studies__details-line {
+  width: 25px;
+  height: 1px;
+  background: #cbd3d1;
+}
+
+.case-studies__details-main {
+  text-align: left;
+}
+
+.case-studies__details-main h3 {
+  margin: 0;
+  color: #101c1e;
+  font-family: "Playfair Display", serif;
+  font-size: clamp(38px, 4vw, 55px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.035em;
+  text-align: left;
+}
+
+.case-studies__details-subtitle {
+  margin: 9px 0 0;
+  color: #5d6d70;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.55;
+  text-align: left;
+}
+
+/* =========================================================
+   DESCRIPTION
+========================================================= */
+
+.case-studies__details-middle {
+  padding-bottom: 2px;
+  text-align: left;
+}
+
+.case-studies__details-middle p {
+  max-width: 320px;
+  margin: 0;
+  color: #7a898c;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: left;
+}
+
+/* =========================================================
+   META
+========================================================= */
+
+.case-studies__details-meta {
+  display: flex;
+  align-items: flex-end;
+  gap: 28px;
+  text-align: left;
+}
+
+.case-studies__details-meta > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.case-studies__details-meta > div > span {
+  color: #7c8c90;
+  font-size: 6px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+}
+
+.case-studies__details-meta strong {
+  color: #253438;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   SERVICES
+========================================================= */
+
+.case-studies__services {
+  min-width: 155px;
+}
+
+.case-studies__services > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.case-studies__services b {
+  padding: 5px 8px;
+  border: 1px solid #d5e0e3;
+  border-radius: 20px;
+  background: rgba(255, 255, 255, 0.7);
+  color: #697a7e;
+  font-size: 6.5px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   VIEW PROJECT
+========================================================= */
+
+.case-studies__view {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 125px;
+  padding: 11px 16px;
+  border: 1px solid rgba(2, 132, 199, 0.32);
+  border-radius: 30px;
+  background: rgba(255, 255, 255, 0.86);
+  color: #0284c7;
+  font-family: "Manrope", sans-serif;
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.case-studies__view:hover {
+  transform: translateY(-2px);
+  background: #0284c7;
+  color: #ffffff;
+  border-color: #0284c7;
+}
+
+/* =========================================================
+   TABLET (MATCHED & LEFT-ALIGNED)
+========================================================= */
+
+@media (max-width: 1100px) {
+  .case-studies {
+    padding: 60px 4.2% 35px;
+  }
+
+  .case-studies__heading {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .case-studies__heading > p {
+    max-width: 650px;
+  }
+
+  .case-studies__film-item {
+    flex-basis: 310px;
+  }
+
+  .case-studies__details-content {
+    grid-template-columns: 1fr 0.8fr;
+    gap: 25px;
+  }
+
+  .case-studies__details-meta {
+    grid-column: 1 / 2;
+  }
+
+  .case-studies__view {
+    grid-column: 2 / 3;
+    justify-self: end;
+  }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE (MATCHED TO GPS & SIBLINGS)
+========================================================= */
+
+@media (max-width: 700px) {
+  .case-studies {
+    padding: 50px 15px 30px;
+  }
+
+  .case-studies__header {
+    margin-bottom: 20px;
+  }
+
+  .case-studies__eyebrow {
+    justify-content: flex-start;
+  }
+
+  .case-studies__count span {
+    display: none;
+  }
+
+  .case-studies__heading {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 25px;
+    gap: 16px;
+  }
+
+  .case-studies__heading > div > span {
+    margin-bottom: 14px;
+    font-size: 8px;
+  }
+
+  .case-studies__heading h2 {
+    font-size: 36px;
+    line-height: 1.1;
+    text-align: left;
+  }
+
+  .case-studies__heading > p {
+    max-width: 100%;
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .case-studies__film-track {
+    padding: 15px 12px;
+    gap: 10px;
+  }
+
+  .case-studies__film-item {
+    flex-basis: 275px;
+  }
+
+  .case-studies__controls {
+    margin-top: 14px;
+  }
+
+  .case-studies__scroll-hint {
+    font-size: 6.5px;
+  }
+
+  .case-studies__details {
+    margin-top: 35px;
+    padding-bottom: 15px;
+  }
+
+  .case-studies__details-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .case-studies__details-main h3 {
+    font-size: 32px;
+    line-height: 1.1;
+    text-align: left;
+  }
+
+  .case-studies__details-subtitle {
+    font-size: 10px;
+    text-align: left;
+  }
+
+  .case-studies__details-middle p {
+    max-width: 100%;
+    font-size: 10px;
+    line-height: 1.5;
+    text-align: left;
+  }
+
+  .case-studies__details-meta {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px 25px;
+  }
+
+  .case-studies__view {
+    width: 100%;
+    justify-self: stretch;
+    padding: 12px;
+  }
+}
+
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
+
+@media (max-width: 430px) {
+  .case-studies__heading h2 {
+    font-size: 30px;
+  }
+
+  .case-studies__eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.15em;
+  }
+
+  .case-studies__film-item {
+    flex-basis: 240px;
+  }
+
+  .case-studies__frame-image {
+    aspect-ratio: 1.4 / 1;
+  }
+
+  .case-studies__project-name {
+    font-size: 24px;
+  }
+
+  .case-studies__details-main h3 {
+    font-size: 28px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .case-studies__film-item,
+  .case-studies__frame-image img,
+  .case-studies__buttons button,
+  .case-studies__view {
+    transition: none;
+  }
+}
+
+/* =========================================================
+   ANDROID / LOW-GPU SAFETY FALLBACKS
+   ========================================================= */
+@media (max-width: 700px) {
+  .case-studies__category,
+  .case-studies__details {
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  .case-studies__category {
+    background: rgba(255, 255, 255, 0.94);
+  }
+}
+
+@media (max-width: 430px) {
+  .case-studies::before {
+    filter: blur(35px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .case-studies *,
+  .case-studies *::before,
+  .case-studies *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
