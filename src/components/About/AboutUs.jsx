@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight } from "lucide-react";
 import "./AboutUs.css";
 import img from "../../assets/images/about/about1.png";
 
@@ -68,11 +67,7 @@ const AboutUs = () => {
               </strong>
             </div>
 
-            <ArrowUpRight
-              className="about-us__quote-arrow"
-              size={18}
-              strokeWidth={1.5}
-            />
+            
           </motion.div>
         </motion.div>
 
