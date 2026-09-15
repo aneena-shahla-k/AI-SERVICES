@@ -1,12 +1,10 @@
 import './App.css';
-import React, { useEffect } from "react";
-// import AOS from 'aos';
-// import 'aos/dist/aos.css'; // AOS സ്റ്റൈൽ ഇംപോർട്ട് ഉറപ്പാക്കുക
+// import React, { useEffect } from "react";
 import { Routes, Route } from 'react-router-dom';
 
-import Navbar from './Components/Navbar/Navbar';
-import Footer from './Components/Footer/Footer';
-import ScrollToTop from './Components/ScrollToTop/ScrollToTop';
+import Navbar from './components/Navigation/Navbar';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 import Home from './pages/Home';
 import About from './pages/About';
@@ -14,12 +12,12 @@ import About from './pages/About';
 // import Contact from './pages/Contact';
 
 const App = () => {
-  useEffect(() => {
-    AOS.init({
-      duration: 1000, 
-      once: true,    
-    });
-  }, []);
+  // useEffect(() => {
+  //   AOS.init({
+  //     duration: 1000, 
+  //     once: true,    
+  //   });
+  // }, []);
 
   return (
     <>
